@@ -51,27 +51,11 @@
   Department of Computer Science\\
   University of Oxford\\
   \texttt{nikolaj.jensen@cs.ox.ac.uk} \\
-  % examples of more authors
   \And
   Jamie Vicary \\
   Department of Computer Science and Technology \\
   University of Cambridge \\
   \texttt{jamie.vicary@cl.cam.ac.uk} \\
-  % \AND
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
 }
 
 
@@ -91,11 +75,20 @@
 
 
 \section{Introduction}
-Hello world
-\section{Related Work}
+\textit{Introduce the idea of idempotent neural networks; give the definition. Justification for usefulness in applications where solutions can be both idempotent and not, and where the idempotent solution may be beneficial. Give a brief overview of the rest of the paper.}
+
 \section{Method}
+\textit{Outline the perturbation analysis which yielded the update rule. Jordan Normal form justification for looking at eigenvalues and for fixed-points. Stability analysis (and nice Julia heatmap) to argue that specific fixed-points are reached. Compare ordinary and modified autodiff by looking at derivative on a single-layer, non-bias network.}
+
 \section{Experimental Results}
-\subsection{Generative Networks}
+\textit{On experimental networks we give line graphs comparing absolute error at varying learning rates. We also give line graphs for LRs over many epochs. Takeaway message is that for deeper/wider networks we outperform ordinary autodiff by a lot.}
+
+\textit{We replicate the results of IGN on MNIST and CelebA. Latent space analysis. Takeaway is that we show application to a U-net GAN architecture based on Conv layers.}
+
+\section{Related Work}
+\textit{Review Idempotent Generative Networks, contrasting our work on a gradient-free approach. Have others applied perturbation theory to ML? We suffer same problems as GANs: mode collapse.}
+
 \section{Conclusion}
+\textit{Give a conclusion of central idea: the use of perturbation analysis to find an iterator which we have successfully applied to a range of toy examples and GAN scenarios.}
 
 \end{document}
