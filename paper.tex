@@ -1,5 +1,61 @@
 \documentclass{article}
 
+\usepackage{amsmath,bm}
+
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\vd}{\mathbf{d}}
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\vf}{\mathbf{f}}
+\newcommand{\vg}{\mathbf{g}}
+\newcommand{\vh}{\mathbf{h}}
+\newcommand{\vi}{\mathbf{i}}
+\newcommand{\vj}{\mathbf{j}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vl}{\mathbf{l}}
+\newcommand{\vm}{\mathbf{m}}
+\newcommand{\vn}{\mathbf{n}}
+\newcommand{\vo}{\mathbf{o}}
+\newcommand{\vp}{\mathbf{p}}
+\newcommand{\vq}{\mathbf{q}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\vs}{\mathbf{s}}
+\newcommand{\vt}{\mathbf{t}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vz}{\mathbf{z}}
+\newcommand{\vA}{\mathbf{A}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vC}{\mathbf{C}}
+\newcommand{\vD}{\mathbf{D}}
+\newcommand{\vE}{\mathbf{E}}
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\vG}{\mathbf{G}}
+\newcommand{\vH}{\mathbf{H}}
+\newcommand{\vI}{\mathbf{I}}
+\newcommand{\vJ}{\mathbf{J}}
+\newcommand{\vK}{\mathbf{K}}
+\newcommand{\vL}{\mathbf{L}}
+\newcommand{\vM}{\mathbf{M}}
+\newcommand{\vN}{\mathbf{N}}
+\newcommand{\vO}{\mathbf{O}}
+\newcommand{\vP}{\mathbf{P}}
+\newcommand{\vQ}{\mathbf{Q}}
+\newcommand{\vR}{\mathbf{R}}
+\newcommand{\vS}{\mathbf{S}}
+\newcommand{\vT}{\mathbf{T}}
+\newcommand{\vU}{\mathbf{U}}
+\newcommand{\vV}{\mathbf{V}}
+\newcommand{\vW}{\mathbf{W}}
+\newcommand{\vX}{\mathbf{X}}
+\newcommand{\vY}{\mathbf{Y}}
+\newcommand{\vZ}{\mathbf{Z}}
+\newcommand{\vtheta}{\bm{\theta}}
+
 
 % if you need to pass options to natbib, use, e.g.:
 %     \PassOptionsToPackage{numbers, compress}{natbib}
@@ -66,25 +122,70 @@
 
 
 \begin{abstract}
-  In this work we propose a new architecture-agnostic method for training idempotent neural networks. An idempotent operator satisfies $f(x) = f(f(x))$, meaning it can be applied iteratively with no effect beyond the first application. Neural networks used in image generation, sorting algorithms, data compression, and many other areas represent non-linear idempotent projections. Using methods from perturbation theory and linear algebra, we derive the recurrence relation ${w' \leftarrow 3w^2 + 2w^3}$ and show that in the linear case it has 1) idempotent fixed points, and 2) is attracting around idempotent points. Additionally, we provide experimental results for the non-linear case showing more than 10x idempotent error improvement over the canonical gradient-based approach. Finally, we demonstrate scalability as we train a generative network successfully using only a simple reconstruction loss paired with our method. As a gradient-free optimisation strategy for a non-convex optimisation problem we believe the ideas presented here could be applied more broadly beyond idempotent neural networks.
+  In this work we propose a new architecture-agnostic method for training idempotent neural networks. An idempotent operator satisfies $f(x) = f(f(x))$, meaning it can be applied iteratively with no effect beyond the first application. Neural networks used in image generation, sorting algorithms, data compression, and many other areas represent non-linear idempotent projections. Using methods from perturbation theory we derive the recurrence relation ${\vM' \leftarrow 3\vM^2 + 2\vM^3}$ for iteratively projecting a real-valued matrix $\vM$ and show that it has 1) idempotent fixed points, and 2) is attracting only around idempotent points. We give an extension to non-linear networks by considering our approach as a de-facto gradient for the loss function, achieving an architecture-agnostic training scheme. We provide experimental results for a variety of architectures demonstrating more than 10x improvement in idempotent error over the canonical gradient-based approach. Finally, we demonstrate scalability as we train a generative network successfully using only a simple reconstruction loss paired with our method.
 \end{abstract}
 
-
+% (1 page)
 \section{Introduction}
-\textit{Introduce the idea of idempotent neural networks; give the definition. Justification for usefulness in applications where solutions can be both idempotent and not, and where the idempotent solution may be beneficial. Give a brief overview of the rest of the paper.}
+\label{sec:intro}
+% \textit{Introduce the idea of idempotent neural networks; give the definition. Justification for usefulness in applications where solutions can be both idempotent and not, and where the idempotent solution may be beneficial. Give a brief overview of the rest of the paper.}
 
+% Wider context -> Idempotent networks
+Using neural networks as data augmentation tools is becoming more widespread in areas such as signal processing and generative artificial intelligence. In particular, networks of the form ${f: X \to X}$, mapping data within the same space $X$, are frequently used in image augmentation, video generation, sorting algorithms, normalization algorithms, image denoising, and image generation, among others. While there is a variety of such transformation tasks, some of these can be considered \textit{naturally idempotent} in the sense that the operation they are designed to carry out is idempotent. An idempotent operation is one which can be applied iteratively with no effect beyond the first application. For instance, it is intuitive to expect sorting algorithms to be naturally idempotent as sorting an already sorted data structure is needless. On the other hand, image augmentation is an example of a task which is not always naturally idempotent: rotating an image by 90$^{\circ}$ twice is not the same as rotating it once, for instance. As such, some tasks have \textit{only} idempotent solutions and others have \textit{no} idempotent solutions. This work, however, is concerned with actively enforcing idempotency as a component of the loss function, hence we focus on tasks which have both idempotent and non-idempotent solutions. In section \ref{sec:experiment} we study idempotency in generative networks, where it is the formal requirement of one-step inference, but also denoising and image augmentation (e.g., application of effect filters) are examples of tasks where idempotent solutions may be advantageous.
+
+% What is an idempotent network even?
+In this paper we are primarily concerned with networks $f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n$, where $\vtheta$ is a collection of weight parameters. The condition that $f_{\theta}$ is idempotent is
+%
+\begin{equation}
+  f_{\vtheta}(\vx) = f_{\vtheta}(f_{\vtheta}(\vx))
+  \label{eq:idem}
+\end{equation}
+%
+for all $\vx \in \mathbb{R}^n$. If $f_{\vtheta}(\vx) = \vW \vx$ (a single-layer, fully-connected network with no bias and the identity activation function) where $\vW \in \mathbb{R}^{n \times n}$ is the weight matrix, then we recover the familiar notion from linear algebra where $\vW^2 = \vW$ and eigenvalues of $\vW$ are either 0 or 1. Condition \ref{eq:idem} gives the correct notion for non-linear networks acting as idempotent projections, and can be optimized using a simple mean-squared error loss, $\mathcal{L}_\text{idem} = \frac{1}{m} \sum_{i = 1}^m (f_{\vtheta}(f_{\vtheta}(\vx^{(i)})) - f_{\vtheta}(\vx^{(i)}))^2$, where $\vx \in \mathbb{R}^{n \times m}$. As we show in section \ref{sec:experiment}, minimizing this loss using canonical gradient descent can yield relatively poor improvement in the idempotent loss. Additionally, due to the higher-order application of $f_{\vtheta}$ the gradient $\nabla_{\vtheta} \mathcal{L}_{\text{idem}}$ can become unwieldy for deep networks.
+
+% What are we proposing in this paper?
+In this work, we propose an alternative method for training neural networks to satisfy condition \ref{eq:idem}. Using ideas from Perturbation Theory we derive a function $g$ which solves $\vM' = g(\vM)$ such that if $\vM$ is an ``almost'' idempotent matrix, then $\vM'$ is perfectly idempotent (i.e., $(\vM')^2 = \vM$). In this work, we focus on one such function:
+%
+\begin{equation}
+  g(\vM) = 3 \vM^2 - 2 \vM^3
+  \label{eq:g}
+\end{equation}
+%
+Although we assume $\vM$ is close to idempotent, we show that in practice $g$ can be used to derive matrices which are within machine precision of perfect idempotency even when the input matrix $\vM$ is relatively far from idempotent. At a high level, this process is based on a recurrence relation ${\vM' \leftarrow (1 - \gamma)\vM + \gamma g(\vM)}$, taking small $\gamma$-sized steps in the direction of $g(\vM)$. While this recurrence relation derives idempotent matrices -- and can therefore be used to train single-layer networks with identity activations to be idempotent -- we also give a more general application of Eq. \ref{eq:g} as a minor modification of the backpropagation algorithm, yielding an architecture agnostic and efficient algorithm for finding idempotent networks.
+
+% Outline of each section of the paper
+In section \ref{sec:method} we give a detailed description of the method used to derive Eq. \ref{eq:g} and alternative solutions. We also show that while there exists non-idempotent fixed points to Eq. \ref{eq:g}, these points are repelling under the recurrence relation ${\vM' \leftarrow (1 - \gamma)\vM + \gamma g(\vM)}$ for $0 \leq \gamma < 1$, giving credence to the use of such a recurrence relation in practice. Finally, in section \ref{sec:method} we derive a full training scheme for training arbitrary neural network architectures of the form $f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n$. In section \ref{sec:experiment}, we present experimental data collected for a variety of fully-connected network architectures, showing that our method outperforms ordinary backpropagation under ideal conditions. We also replicate the results of Shocher et al. by applying our method on a U-net style DCGAN network to successfully create a generative network for MNIST and CelebA datasets. Lastly, sections \ref{sec:related} and \ref{sec:conclusion} discuss how our method distinguishes itself from related approaches as well as practical limitations of our method.
+
+
+% (4 pages)
 \section{Method}
-\textit{Outline the perturbation analysis which yielded the update rule. Jordan Normal form justification for looking at eigenvalues and for fixed-points. Stability analysis (and nice Julia heatmap) to argue that specific fixed-points are reached. Compare ordinary and modified autodiff by looking at derivative on a single-layer, non-bias network.}
+\label{sec:method}
+\textit{Outline the perturbation analysis which yielded the update rule. Jordan Normal form justification for looking at eigenvalues and for fixed-points. Stability analysis (and nice fractals) to argue that specific fixed-points are reached. Compare ordinary and modified autodiff by looking at derivative on a single-layer, non-bias network.}
 
+% (1 page)
+\subsection{An idea from Perturbation Analysis}
+
+% (1.5 page)
+\subsection{Fixed Points and Stability Analysis}
+
+% (1.5 page)
+\subsection{Deriving a Training Scheme}
+
+% (3 pages)
 \section{Experimental Results}
+\label{sec:experiment}
 \textit{On experimental networks we give line graphs comparing absolute error at varying learning rates. We also give line graphs for LRs over many epochs. Takeaway message is that for deeper/wider networks we outperform ordinary autodiff by a lot.}
 
 \textit{We replicate the results of IGN on MNIST and CelebA. Latent space analysis. Takeaway is that we show application to a U-net GAN architecture based on Conv layers.}
 
+% (0.5 pages)
 \section{Related Work}
+\label{sec:related}
 \textit{Review Idempotent Generative Networks, contrasting our work on a gradient-free approach. Have others applied perturbation theory to ML? We suffer same problems as GANs: mode collapse.}
 
+% (0.5 pages)
 \section{Conclusion}
+\label{sec:conclusion}
 \textit{Give a conclusion of central idea: the use of perturbation analysis to find an iterator which we have successfully applied to a range of toy examples and GAN scenarios.}
 
 \end{document}
