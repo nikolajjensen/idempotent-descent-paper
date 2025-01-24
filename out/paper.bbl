@@ -1,505 +1,76 @@
-% $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
-% Do not modify the above lines!
-%
-% This is an auxiliary file used by the 'biblatex' package.
-% This file may safely be deleted. It will be recreated by
-% biber as required.
-%
-\begingroup
-\makeatletter
-\@ifundefined{ver@biblatex.sty}
-  {\@latex@error
-     {Missing 'biblatex' package}
-     {The bibliography requires the 'biblatex' package.}
-      \aftergroup\endinput}
-  {}
-\endgroup
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[H.~Weintraub(2009)]{jordan-form}
+H.~Weintraub, S.
+\newblock \emph{Jordan Canonical Form}.
+\newblock Springer, 2009.
 
-\refsection{0}
-  \datalist[entry]{nty/global//global/global}
-    \entry{jordan-form}{book}{}
-      \name{author}{1}{}{%
-        {{hash=7d4d7e4d260e9bbdee48cb95a7f91bcd}{%
-           family={H.\bibnamedelimi Weintraub},
-           familyi={H\bibinitperiod\bibinitdelim W\bibinitperiod},
-           given={Steven},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \strng{fullhash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \strng{bibnamehash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \strng{authorbibnamehash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \strng{authornamehash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \strng{authorfullhash}{7d4d7e4d260e9bbdee48cb95a7f91bcd}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{subtitle}{Theory and Practice}
-      \field{title}{Jordan Canonical Form}
-      \field{year}{2009}
-    \endentry
-    \entry{hirschfelder-dev-perturb}{incollection}{}
-      \name{author}{3}{}{%
-        {{hash=9db56661ab7bb17c54775b6dfcfb05ae}{%
-           family={Hirschfelder},
-           familyi={H\bibinitperiod},
-           given={Joseph\bibnamedelima O.},
-           giveni={J\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
-        {{hash=af8a1f4f35e8c41a8057c3eba6174398}{%
-           family={Brown},
-           familyi={B\bibinitperiod},
-           given={W.\bibnamedelimi Byers},
-           giveni={W\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
-        {{hash=0d2b4748228d6274f4aa52bbea5d1cc3}{%
-           family={Epstein},
-           familyi={E\bibinitperiod},
-           given={Saul\bibnamedelima T.},
-           giveni={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
-      }
-      \name{editor}{1}{}{%
-        {{hash=b0a54dd0b55eae01d10be8b4d0fd7cbb}{%
-           family={Löwdin},
-           familyi={L\bibinitperiod},
-           given={Per-Olov},
-           giveni={P\bibinithyphendelim O\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Academic Press}%
-      }
-      \strng{namehash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{fullhash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{bibnamehash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{authorbibnamehash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{authornamehash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{authorfullhash}{39992002897e3e22b5d8b9d88dae1983}
-      \strng{editorbibnamehash}{b0a54dd0b55eae01d10be8b4d0fd7cbb}
-      \strng{editornamehash}{b0a54dd0b55eae01d10be8b4d0fd7cbb}
-      \strng{editorfullhash}{b0a54dd0b55eae01d10be8b4d0fd7cbb}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Publisher Summary The purpose of this chapter is to provide information on the recent developments in perturbation theory. In recent years, there is a great increase of interest in the application of perturbation theory to the fundamental problems of quantum chemistry. Perturbation theory is designed to deal systematically with the effects of small perturbations on physical systems when the effects of the perturbations are mathematically too difficult to calculate exactly, and the properties of the unperturbed system are known. The new applications have been mainly to atoms where the reciprocal of the atomic number, l/Z, provides a natural perturbation parameter. These may be divided into two groups. The first consists of calculations of energy levels, and is a natural outgrowth of Hylleraas's classic work on the 1/Z expansion for two-electron atoms. The applications in the second group are to the calculation of expectation values and other properties of atoms and molecules, and are of much more recent origin. There are two principal reasons for the success of these new applications: (1) sufficient accuracy is frequently obtained from knowledge of a first-order perturbed wave function, and (2) a great advantage of perturbation theory is that the functional form of the perturbed wave function is shaped by the perturbation itself.}
-      \field{issn}{0065-3276}
-      \field{series}{Advances in Quantum Chemistry}
-      \field{title}{Recent Developments in Perturbation Theory}
-      \field{volume}{1}
-      \field{year}{1964}
-      \field{pages}{255\bibrangedash 374}
-      \range{pages}{120}
-      \verb{doi}
-      \verb https://doi.org/10.1016/S0065-3276(08)60381-0
-      \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0065327608603810
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0065327608603810
-      \endverb
-    \endentry
-    \entry{ilesanmi-denoising}{article}{}
-      \name{author}{2}{}{%
-        {{hash=5fce7f4388064b66cdad94d7e91a36fe}{%
-           family={Ilesanmi},
-           familyi={I\bibinitperiod},
-           given={Ademola\bibnamedelima E.},
-           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=0078bf88fc7ab1682ed67afa14a76c80}{%
-           family={Ilesanmi},
-           familyi={I\bibinitperiod},
-           given={Taiwo\bibnamedelima O.},
-           giveni={T\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
-      }
-      \strng{namehash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \strng{fullhash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \strng{bibnamehash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \strng{authorbibnamehash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \strng{authornamehash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \strng{authorfullhash}{999a5926c876dedb23935cbe2e8a5c8d}
-      \field{sortinit}{I}
-      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Image denoising faces significant challenges, arising from the sources of noise. Specifically, Gaussian, impulse, salt, pepper, and speckle noise are complicated sources of noise in imaging. Convolutional neural network (CNN) has increasingly received attention in image denoising task. Several CNN methods for denoising images have been studied. These methods used different datasets for evaluation. In this paper, we offer an elaborate study on different CNN techniques used in image denoising. Different CNN methods for image denoising were categorized and analyzed. Popular datasets used for evaluating CNN image denoising methods were investigated. Several CNN image denoising papers were selected for review and analysis. Motivations and principles of CNN methods were outlined. Some state-of-the-arts CNN image denoising methods were depicted in graphical forms, while other methods were elaborately explained. We proposed a review of image denoising with CNN. Previous and recent papers on image denoising with CNN were selected. Potential challenges and directions for future research were equally fully explicated.}
-      \field{issn}{2198-6053}
-      \field{journaltitle}{Complex {\&} Intelligent Systems}
-      \field{month}{10}
-      \field{number}{5}
-      \field{title}{Methods for image denoising using convolutional neural network: a review}
-      \field{volume}{7}
-      \field{year}{2021}
-      \field{pages}{2179\bibrangedash 2198}
-      \range{pages}{20}
-      \verb{doi}
-      \verb 10.1007/s40747-021-00428-4
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1007/s40747-021-00428-4
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1007/s40747-021-00428-4
-      \endverb
-    \endentry
-    \entry{intro-pertub-theory}{book}{}
-      \name{author}{1}{}{%
-        {{hash=de2df565ad24725681a931fe6bd95efd}{%
-           family={Kato},
-           familyi={K\bibinitperiod},
-           given={Tosio},
-           giveni={T\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{de2df565ad24725681a931fe6bd95efd}
-      \strng{fullhash}{de2df565ad24725681a931fe6bd95efd}
-      \strng{bibnamehash}{de2df565ad24725681a931fe6bd95efd}
-      \strng{authorbibnamehash}{de2df565ad24725681a931fe6bd95efd}
-      \strng{authornamehash}{de2df565ad24725681a931fe6bd95efd}
-      \strng{authorfullhash}{de2df565ad24725681a931fe6bd95efd}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Perturbation Theory for Linear Operators}
-      \field{year}{1995}
-    \endentry
-    \entry{liu-gans}{article}{}
-      \name{author}{5}{}{%
-        {{hash=0c3c4604957af5f2ce5f1537fdbaa510}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Ming-Yu},
-           giveni={M\bibinithyphendelim Y\bibinitperiod}}}%
-        {{hash=18e2748019898f7b8be59e77f5b8b20e}{%
-           family={Huang},
-           familyi={H\bibinitperiod},
-           given={Xun},
-           giveni={X\bibinitperiod}}}%
-        {{hash=39e224f7a71cf6663eb02e20fe36a941}{%
-           family={Yu},
-           familyi={Y\bibinitperiod},
-           given={Jiahui},
-           giveni={J\bibinitperiod}}}%
-        {{hash=214421d9f392d2112d38ea78fbe1bc0b}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Ting-Chun},
-           giveni={T\bibinithyphendelim C\bibinitperiod}}}%
-        {{hash=8b2c2efa89daa5da458edad81ab5c0e8}{%
-           family={Mallya},
-           familyi={M\bibinitperiod},
-           given={Arun},
-           giveni={A\bibinitperiod}}}%
-      }
-      \strng{namehash}{7f0ff7f52af57e49bdab9aad2ce64a26}
-      \strng{fullhash}{d36d2606de5b27b5cdd6e695e3c46a98}
-      \strng{bibnamehash}{7f0ff7f52af57e49bdab9aad2ce64a26}
-      \strng{authorbibnamehash}{7f0ff7f52af57e49bdab9aad2ce64a26}
-      \strng{authornamehash}{7f0ff7f52af57e49bdab9aad2ce64a26}
-      \strng{authorfullhash}{d36d2606de5b27b5cdd6e695e3c46a98}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Proceedings of the IEEE}
-      \field{number}{5}
-      \field{title}{Generative Adversarial Networks for Image and Video Synthesis: Algorithms and Applications}
-      \field{volume}{109}
-      \field{year}{2021}
-      \field{pages}{839\bibrangedash 862}
-      \range{pages}{24}
-      \verb{doi}
-      \verb 10.1109/JPROC.2021.3049196
-      \endverb
-      \keyw{Computer vision;Generators;Training data;Generative adversarial networks;Linear programming;Visualization;Training data;Neural networks;Photorealism;Image synthesis;Rendering (computer graphics);Computer vision;generative adversarial networks (GANs);image and video synthesis;image processing;neural rendering}
-    \endentry
-    \entry{lu-image-aug}{article}{}
-      \name{author}{4}{}{%
-        {{hash=ff82268cb4ef19500fe29f3af4f5d06c}{%
-           family={Lu},
-           familyi={L\bibinitperiod},
-           given={Yuzhen},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=f8ff1228cc4422c31e97a0f5e9dc2940}{%
-           family={Chen},
-           familyi={C\bibinitperiod},
-           given={Dong},
-           giveni={D\bibinitperiod}}}%
-        {{hash=6c77e059ef93cd7ff2a42b618490a921}{%
-           family={Olaniyi},
-           familyi={O\bibinitperiod},
-           given={Ebenezer},
-           giveni={E\bibinitperiod}}}%
-        {{hash=1e12f92df6bcf7d154f13a44f15f5dcf}{%
-           family={Huang},
-           familyi={H\bibinitperiod},
-           given={Yanbo},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \strng{namehash}{4ee86a3d01b7f103619cb9f970c020c4}
-      \strng{fullhash}{5aac3fe0d750dd2bd3ae2a5a776f9695}
-      \strng{bibnamehash}{4ee86a3d01b7f103619cb9f970c020c4}
-      \strng{authorbibnamehash}{4ee86a3d01b7f103619cb9f970c020c4}
-      \strng{authornamehash}{4ee86a3d01b7f103619cb9f970c020c4}
-      \strng{authorfullhash}{5aac3fe0d750dd2bd3ae2a5a776f9695}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{In agricultural image analysis, optimal model performance is keenly pursued for better fulfilling visual recognition tasks (e.g., image classification, segmentation, object detection and localization), in the presence of challenges with biological variability and unstructured environments. Large-scale, balanced and ground-truthed image datasets are tremendously beneficial but most often difficult to obtain to fuel the development of highly performant models. As artificial intelligence through deep learning is impacting analysis and modeling of agricultural images, image augmentation plays a crucial role in boosting model performance while reducing manual efforts for image collection and labelling, by algorithmically creating and expanding datasets. Beyond traditional data augmentation techniques, generative adversarial network (GAN) invented in 2014 in the computer vision community, provides a suite of novel approaches that can learn good data representations and generate highly realistic samples. Since 2017, there has been a growth of research into GANs for image augmentation or synthesis in agriculture for improved model performance. This paper presents an overview of the evolution of GAN architectures followed by a first systematic review of various applications in agriculture and food systems (https://github.com/Derekabc/GANs-Agriculture), involving a diversity of visual recognition tasks for plant health conditions, weeds, fruits (preharvest), aquaculture, animal farming, plant phenotyping as well as postharvest detection of fruit defects. Challenges and opportunities of GANs are discussed for future research.}
-      \field{issn}{0168-1699}
-      \field{journaltitle}{Computers and Electronics in Agriculture}
-      \field{title}{Generative adversarial networks (GANs) for image augmentation in agriculture: A systematic review}
-      \field{volume}{200}
-      \field{year}{2022}
-      \field{pages}{107208}
-      \range{pages}{1}
-      \verb{doi}
-      \verb https://doi.org/10.1016/j.compag.2022.107208
-      \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0168169922005233
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0168169922005233
-      \endverb
-      \keyw{GAN,Image Augmentation,Agriculture,Deep Learning,Computer Vision}
-    \endentry
-    \entry{ma-compression}{article}{}
-      \name{author}{6}{}{%
-        {{hash=76fe7901814e780ed04f31c3fa79dd1d}{%
-           family={Ma},
-           familyi={M\bibinitperiod},
-           given={Siwei},
-           giveni={S\bibinitperiod}}}%
-        {{hash=55a3c9968c6cdfe1b1c2f29aa87a58eb}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Xinfeng},
-           giveni={X\bibinitperiod}}}%
-        {{hash=09713cbf0a460f31a42f7daf2c5d4c8e}{%
-           family={Jia},
-           familyi={J\bibinitperiod},
-           given={Chuanmin},
-           giveni={C\bibinitperiod}}}%
-        {{hash=91ac4194a3cf2a105c9ad30850857dac}{%
-           family={Zhao},
-           familyi={Z\bibinitperiod},
-           given={Zhenghui},
-           giveni={Z\bibinitperiod}}}%
-        {{hash=4762c13030571d33e9f72dc2a071cf2d}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Shiqi},
-           giveni={S\bibinitperiod}}}%
-        {{hash=ea561647f5fad5db951f801d1cd0c400}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Shanshe},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{442eb44738795b3733b471a6010ef85d}
-      \strng{fullhash}{3a77597116124c47857d9fff9b7b74e3}
-      \strng{bibnamehash}{442eb44738795b3733b471a6010ef85d}
-      \strng{authorbibnamehash}{442eb44738795b3733b471a6010ef85d}
-      \strng{authornamehash}{442eb44738795b3733b471a6010ef85d}
-      \strng{authorfullhash}{3a77597116124c47857d9fff9b7b74e3}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Circuits and Systems for Video Technology}
-      \field{number}{6}
-      \field{title}{Image and Video Compression With Neural Networks: A Review}
-      \field{volume}{30}
-      \field{year}{2020}
-      \field{pages}{1683\bibrangedash 1698}
-      \range{pages}{16}
-      \verb{doi}
-      \verb 10.1109/TCSVT.2019.2910119
-      \endverb
-      \keyw{Image coding;Biological neural networks;Video coding;Video compression;Redundancy;Transform coding;Neural network;deep learning;CNN;image compression;video coding}
-    \endentry
-    \entry{mao-deblurring}{article}{}
-      \name{author}{4}{}{%
-        {{hash=b4dcfe46264be8c6ecd4308136550bbb}{%
-           family={Mao},
-           familyi={M\bibinitperiod},
-           given={Yuxin},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=92c62e4e99f0980e9f6f6b144644bf9c}{%
-           family={Wan},
-           familyi={W\bibinitperiod},
-           given={Zhexiong},
-           giveni={Z\bibinitperiod}}}%
-        {{hash=46e3a90300a599dc3588c3ceb79df78b}{%
-           family={Dai},
-           familyi={D\bibinitperiod},
-           given={Yuchao},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=838f9c53f4bf8c96b81ccf60d07ab8c7}{%
-           family={Yu},
-           familyi={Y\bibinitperiod},
-           given={Xin},
-           giveni={X\bibinitperiod}}}%
-      }
-      \strng{namehash}{a0ade1d77fe300ed559f3ba38ebaa896}
-      \strng{fullhash}{6e01316419187e69f2406e9c8c1a0608}
-      \strng{bibnamehash}{a0ade1d77fe300ed559f3ba38ebaa896}
-      \strng{authorbibnamehash}{a0ade1d77fe300ed559f3ba38ebaa896}
-      \strng{authornamehash}{a0ade1d77fe300ed559f3ba38ebaa896}
-      \strng{authorfullhash}{6e01316419187e69f2406e9c8c1a0608}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Circuits and Systems for Video Technology}
-      \field{number}{1}
-      \field{title}{Deep Idempotent Network for Efficient Single Image Blind Deblurring}
-      \field{volume}{33}
-      \field{year}{2023}
-      \field{pages}{172\bibrangedash 185}
-      \range{pages}{14}
-      \verb{doi}
-      \verb 10.1109/TCSVT.2022.3202361
-      \endverb
-      \keyw{Image restoration;Real-time systems;Deep learning;Mathematical models;Kernel;Training;Convolutional neural networks;Idempotent network;single image blind deblurring;efficient deblurring}
-    \endentry
-    \entry{namphol-compression}{article}{}
-      \name{author}{3}{}{%
-        {{hash=608135440d9c9377e01948ac9d183d0b}{%
-           family={Namphol},
-           familyi={N\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=a0e8cf436d9792a400f63f0cbfa41a4e}{%
-           family={Chin},
-           familyi={C\bibinitperiod},
-           given={S.H.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=0ae34732dd54fd373c5d1ae3a92775e9}{%
-           family={Arozullah},
-           familyi={A\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \strng{fullhash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \strng{bibnamehash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \strng{authorbibnamehash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \strng{authornamehash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \strng{authorfullhash}{f83645ed21d9020e2a7b467a0c0fbfcc}
-      \field{sortinit}{N}
-      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Aerospace and Electronic Systems}
-      \field{number}{1}
-      \field{title}{Image compression with a hierarchical neural network}
-      \field{volume}{32}
-      \field{year}{1996}
-      \field{pages}{326\bibrangedash 338}
-      \range{pages}{13}
-      \verb{doi}
-      \verb 10.1109/7.481272
-      \endverb
-      \keyw{Image coding;Neural networks;Data compression;Wavelet transforms;Books;Image storage;Image analysis;Training data;Layout;Biological neural networks}
-    \endentry
-    \entry{shocher-ign}{misc}{}
-      \name{author}{6}{}{%
-        {{hash=c0cf2936db293db956df52ec67e8a1fd}{%
-           family={Shocher},
-           familyi={S\bibinitperiod},
-           given={Assaf},
-           giveni={A\bibinitperiod}}}%
-        {{hash=885b38e361ea3f8ade250ab9d96d27e9}{%
-           family={Dravid},
-           familyi={D\bibinitperiod},
-           given={Amil},
-           giveni={A\bibinitperiod}}}%
-        {{hash=94c87fb65bf599c35d599a9c391981f0}{%
-           family={Gandelsman},
-           familyi={G\bibinitperiod},
-           given={Yossi},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=d15faccf8e8953482473f549d8886b48}{%
-           family={Mosseri},
-           familyi={M\bibinitperiod},
-           given={Inbar},
-           giveni={I\bibinitperiod}}}%
-        {{hash=afbc21c0ba7555cdd6a589cc59eb3c34}{%
-           family={Rubinstein},
-           familyi={R\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=5a663b27298722834a8cf09bb93d8c94}{%
-           family={Efros},
-           familyi={E\bibinitperiod},
-           given={Alexei\bibnamedelima A.},
-           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \strng{namehash}{e7aa6b95323bc3babe4c10199953db12}
-      \strng{fullhash}{3616ee68cb4dbedf96b74473b70dd022}
-      \strng{bibnamehash}{e7aa6b95323bc3babe4c10199953db12}
-      \strng{authorbibnamehash}{e7aa6b95323bc3babe4c10199953db12}
-      \strng{authornamehash}{e7aa6b95323bc3babe4c10199953db12}
-      \strng{authorfullhash}{3616ee68cb4dbedf96b74473b70dd022}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.CV}
-      \field{eprinttype}{arXiv}
-      \field{title}{Idempotent Generative Network}
-      \field{year}{2023}
-      \verb{eprint}
-      \verb 2311.01462
-      \endverb
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/2311.01462
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/2311.01462
-      \endverb
-    \endentry
-    \entry{tambouratzis-sorting}{article}{}
-      \name{author}{1}{}{%
-        {{hash=245bc1b71e7d23981064014d4bc4e952}{%
-           family={Tambouratzis},
-           familyi={T\bibinitperiod},
-           given={T.},
-           giveni={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{245bc1b71e7d23981064014d4bc4e952}
-      \strng{fullhash}{245bc1b71e7d23981064014d4bc4e952}
-      \strng{bibnamehash}{245bc1b71e7d23981064014d4bc4e952}
-      \strng{authorbibnamehash}{245bc1b71e7d23981064014d4bc4e952}
-      \strng{authornamehash}{245bc1b71e7d23981064014d4bc4e952}
-      \strng{authorfullhash}{245bc1b71e7d23981064014d4bc4e952}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)}
-      \field{number}{2}
-      \field{title}{A novel artificial neural network for sorting}
-      \field{volume}{29}
-      \field{year}{1999}
-      \field{pages}{271\bibrangedash 275}
-      \range{pages}{5}
-      \verb{doi}
-      \verb 10.1109/3477.752799
-      \endverb
-      \keyw{Artificial neural networks;Sorting;Simulated annealing;Clamps;Signal resolution;Computer networks;Very large scale integration;Process design;Signal design;Digital signal processing}
-    \endentry
-  \enddatalist
-\endrefsection
-\endinput
+\bibitem[Hirschfelder et~al.(1964)Hirschfelder, Brown, and Epstein]{hirschfelder-dev-perturb}
+Hirschfelder, J.~O., Brown, W.~B., and Epstein, S.~T.
+\newblock Recent developments in perturbation theory.
+\newblock volume~1 of \emph{Advances in Quantum Chemistry}, pp.\  255--374. Academic Press, 1964.
+\newblock \doi{https://doi.org/10.1016/S0065-3276(08)60381-0}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S0065327608603810}.
 
+\bibitem[Ilesanmi \& Ilesanmi(2021)Ilesanmi and Ilesanmi]{ilesanmi-denoising}
+Ilesanmi, A.~E. and Ilesanmi, T.~O.
+\newblock Methods for image denoising using convolutional neural network: a review.
+\newblock \emph{Complex {\&} Intelligent Systems}, 7\penalty0 (5):\penalty0 2179--2198, 10 2021.
+\newblock ISSN 2198-6053.
+\newblock \doi{10.1007/s40747-021-00428-4}.
+\newblock URL \url{https://doi.org/10.1007/s40747-021-00428-4}.
+
+\bibitem[Kato(1995)]{intro-pertub-theory}
+Kato, T.
+\newblock \emph{Perturbation Theory for Linear Operators}.
+\newblock Springer, 1995.
+
+\bibitem[Liu et~al.(2021)Liu, Huang, Yu, Wang, and Mallya]{liu-gans}
+Liu, M.-Y., Huang, X., Yu, J., Wang, T.-C., and Mallya, A.
+\newblock Generative adversarial networks for image and video synthesis: Algorithms and applications.
+\newblock \emph{Proceedings of the IEEE}, 109\penalty0 (5):\penalty0 839--862, 2021.
+\newblock \doi{10.1109/JPROC.2021.3049196}.
+
+\bibitem[Lu et~al.(2022)Lu, Chen, Olaniyi, and Huang]{lu-image-aug}
+Lu, Y., Chen, D., Olaniyi, E., and Huang, Y.
+\newblock Generative adversarial networks (gans) for image augmentation in agriculture: A systematic review.
+\newblock \emph{Computers and Electronics in Agriculture}, 200:\penalty0 107208, 2022.
+\newblock ISSN 0168-1699.
+\newblock \doi{https://doi.org/10.1016/j.compag.2022.107208}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S0168169922005233}.
+
+\bibitem[Ma et~al.(2020)Ma, Zhang, Jia, Zhao, Wang, and Wang]{ma-compression}
+Ma, S., Zhang, X., Jia, C., Zhao, Z., Wang, S., and Wang, S.
+\newblock Image and video compression with neural networks: A review.
+\newblock \emph{IEEE Transactions on Circuits and Systems for Video Technology}, 30\penalty0 (6):\penalty0 1683--1698, 2020.
+\newblock \doi{10.1109/TCSVT.2019.2910119}.
+
+\bibitem[Mao et~al.(2023)Mao, Wan, Dai, and Yu]{mao-deblurring}
+Mao, Y., Wan, Z., Dai, Y., and Yu, X.
+\newblock Deep idempotent network for efficient single image blind deblurring.
+\newblock \emph{IEEE Transactions on Circuits and Systems for Video Technology}, 33\penalty0 (1):\penalty0 172--185, 2023.
+\newblock \doi{10.1109/TCSVT.2022.3202361}.
+
+\bibitem[Namphol et~al.(1996)Namphol, Chin, and Arozullah]{namphol-compression}
+Namphol, A., Chin, S., and Arozullah, M.
+\newblock Image compression with a hierarchical neural network.
+\newblock \emph{IEEE Transactions on Aerospace and Electronic Systems}, 32\penalty0 (1):\penalty0 326--338, 1996.
+\newblock \doi{10.1109/7.481272}.
+
+\bibitem[Shocher et~al.(2023)Shocher, Dravid, Gandelsman, Mosseri, Rubinstein, and Efros]{shocher-ign}
+Shocher, A., Dravid, A., Gandelsman, Y., Mosseri, I., Rubinstein, M., and Efros, A.~A.
+\newblock Idempotent generative network, 2023.
+\newblock URL \url{https://arxiv.org/abs/2311.01462}.
+
+\bibitem[Tambouratzis(1999)]{tambouratzis-sorting}
+Tambouratzis, T.
+\newblock A novel artificial neural network for sorting.
+\newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)}, 29\penalty0 (2):\penalty0 271--275, 1999.
+\newblock \doi{10.1109/3477.752799}.
+
+\end{thebibliography}
