@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.1)  24 JAN 2025 13:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.1)  27 JAN 2025 22:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -721,48 +721,65 @@ Package subcaption Info: The counter `subfigure' was already defined by
 (subcaption)             an unknown document class or package on input line 238.
 Package subcaption Info: The counter `subtable' was already defined by
 (subcaption)             an unknown document class or package on input line 238.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/sttools/stfloats.sty
+Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip settings
+\@dblbotnum=\count346
+\c@dblbotnumber=\count347
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 122.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 125.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count346
+\l__color_backend_stack_int=\count348
 \l__pdf_internal_box=\box74
-) (out/paper.aux)
+) (out/paper.aux
+
+LaTeX Warning: Label `fig:pca-b2' multiply defined.
+
+
+LaTeX Warning: Label `fig:pca-b2@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:pca-b2' multiply defined.
+
+
+LaTeX Warning: Label `fig:pca-b2@cref' multiply defined.
+
+)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
-LaTeX Font Info:    ... okay on input line 122.
-LaTeX Info: Redefining \microtypecontext on input line 122.
-Package microtype Info: Applying patch `item' on input line 122.
-Package microtype Info: Applying patch `toc' on input line 122.
-Package microtype Info: Applying patch `eqnum' on input line 122.
-Package microtype Info: Applying patch `footnote' on input line 122.
-Package microtype Info: Applying patch `verbatim' on input line 122.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Info: Redefining \microtypecontext on input line 125.
+Package microtype Info: Applying patch `item' on input line 125.
+Package microtype Info: Applying patch `toc' on input line 125.
+Package microtype Info: Applying patch `eqnum' on input line 125.
+Package microtype Info: Applying patch `footnote' on input line 125.
+Package microtype Info: Applying patch `verbatim' on input line 125.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 122.
+LaTeX Info: Redefining \showhyphens on input line 125.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -770,16 +787,16 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 ) (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count347
+\scratchcounter=\count349
 \scratchdimen=\dimen322
 \scratchbox=\box75
-\nofMPsegments=\count348
-\nofMParguments=\count349
+\nofMPsegments=\count350
+\nofMParguments=\count351
 \everyMPshowfont=\toks56
-\MPscratchCnt=\count350
+\MPscratchCnt=\count352
 \MPscratchDim=\dimen323
-\MPnumerator=\count351
-\makeMPintoPDFobject=\count352
+\MPnumerator=\count353
+\makeMPintoPDFobject=\count354
 \everyMPtoPDFconversion=\toks57
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -787,7 +804,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 122.
+Package hyperref Info: Link coloring ON on input line 125.
  (out/paper.out) (out/paper.out)
 \@outlinefile=\write4
 \openout4 = `paper.out'.
@@ -795,54 +812,54 @@ Package hyperref Info: Link coloring ON on input line 122.
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 122.
+ on input line 125.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 159.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 162.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 159.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 162.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-\c@@affilox=\count353
-\c@@affilcam=\count354
+\c@@affilox=\count355
+\c@@affilcam=\count356
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 170.
+Package hyperref Warning: Ignoring empty anchor on input line 173.
 
-LaTeX Font Info:    Trying to load font information for OML+ptm on input line 170.
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 173.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 170.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 173.
 
-Underfull \hbox (badness 1810) in paragraph at lines 170--170
+Underfull \hbox (badness 1810) in paragraph at lines 173--173
 [][][]| $[]$\OT1/ptm/m/n/9 (+20) Equal con-tri-bu-tion  $[]$Department of Com-puter Sci-ence,
  []
 
 
-Underfull \hbox (badness 5133) in paragraph at lines 170--170
+Underfull \hbox (badness 5133) in paragraph at lines 173--173
 \OT1/ptm/m/n/9 (+20) Uni-ver-sity of Ox-ford, Ox-ford, Eng-land $[]$Department of
  []
 
 
-Underfull \hbox (badness 5954) in paragraph at lines 170--170
+Underfull \hbox (badness 5954) in paragraph at lines 173--173
 \OT1/ptm/m/n/9 (+20) Com-puter Sci-ence and Tech-nol-ogy, Uni-ver-sity of Cam-
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 170--170
+Underfull \hbox (badness 1838) in paragraph at lines 173--173
 \OT1/ptm/m/n/9 (+20) Banke Jensen \OML/cmm/m/it/9 <\OT1/ptm/m/n/9 (+20) niko-laj.jensen@cs.ox.ac.uk\OML/cmm/m/it/9 >\OT1/ptm/m/n/9 (+20) , Jamie Vi-cary
  []
 
@@ -854,36 +871,62 @@ Underfull \vbox (badness 4108) has occurred while \output is active []
 
 
 ] [2]
-<./resources/fractal.pdf, id=109, 1194.4625pt x 569.12625pt>
+<./resources/fractal.pdf, id=109, 1194.4625pt x 518.93875pt>
 File: ./resources/fractal.pdf Graphic file (type pdf)
 <use ./resources/fractal.pdf>
-Package pdftex.def Info: ./resources/fractal.pdf  used on input line 320.
-(pdftex.def)             Requested size: 234.8775pt x 111.91272pt.
- [3 <./resources/fractal.pdf>]
-<./resources/abs_err_b1234.png, id=149, 722.7pt x 505.89pt>
-File: ./resources/abs_err_b1234.png Graphic file (type png)
-<use ./resources/abs_err_b1234.png>
-Package pdftex.def Info: ./resources/abs_err_b1234.png  used on input line 385.
-(pdftex.def)             Requested size: 487.8225pt x 341.47644pt.
-<./resources/runs_err_b23.png, id=151, 722.7pt x 433.62pt>
-File: ./resources/runs_err_b23.png Graphic file (type png)
-<use ./resources/runs_err_b23.png>
-Package pdftex.def Info: ./resources/runs_err_b23.png  used on input line 392.
-(pdftex.def)             Requested size: 487.8225pt x 292.6941pt.
-<./resources/mnist-mod-autodiff-generative.png, id=152, 573.8238pt x 642.4803pt>
-File: ./resources/mnist-mod-autodiff-generative.png Graphic file (type png)
-<use ./resources/mnist-mod-autodiff-generative.png>
-Package pdftex.def Info: ./resources/mnist-mod-autodiff-generative.png  used on input line 407.
-(pdftex.def)             Requested size: 211.3883pt x 236.67482pt.
-<./resources/mnist-ord-autodiff-generative.png, id=153, 573.8238pt x 642.4803pt>
-File: ./resources/mnist-ord-autodiff-generative.png Graphic file (type png)
-<use ./resources/mnist-ord-autodiff-generative.png>
-Package pdftex.def Info: ./resources/mnist-ord-autodiff-generative.png  used on input line 411.
-(pdftex.def)             Requested size: 211.3883pt x 236.67482pt.
+Package pdftex.def Info: ./resources/fractal.pdf  used on input line 317.
+(pdftex.def)             Requested size: 482.94695pt x 209.82063pt.
+ [3]
+<./resources/pca_b2.png, id=133, 325.215pt x 325.215pt>
+File: ./resources/pca_b2.png Graphic file (type png)
+<use ./resources/pca_b2.png>
+Package pdftex.def Info: ./resources/pca_b2.png  used on input line 349.
+(pdftex.def)             Requested size: 223.1329pt x 223.13814pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./resources/cos.png, id=135, 433.62pt x 144.54pt>
+File: ./resources/cos.png Graphic file (type png)
+<use ./resources/cos.png>
+Package pdftex.def Info: ./resources/cos.png  used on input line 356.
+(pdftex.def)             Requested size: 223.1329pt x 74.37827pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./resources/norm.png, id=136, 433.62pt x 144.54pt>
+File: ./resources/norm.png Graphic file (type png)
+<use ./resources/norm.png>
+Package pdftex.def Info: ./resources/norm.png  used on input line 363.
+(pdftex.def)             Requested size: 223.1329pt x 74.37827pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4] [5 <./resources/abs_err_b1234.png>] [6 <./resources/runs_err_b23.png>] (out/paper.bbl
+ [4 <./resources/fractal.pdf>]
+<./resources/abs_err_b1234.png, id=164, 867.24pt x 433.62pt>
+File: ./resources/abs_err_b1234.png Graphic file (type png)
+<use ./resources/abs_err_b1234.png>
+Package pdftex.def Info: ./resources/abs_err_b1234.png  used on input line 408.
+(pdftex.def)             Requested size: 487.8225pt x 243.91064pt.
+<./resources/runs_err_b23.png, id=165, 722.7pt x 332.442pt>
+File: ./resources/runs_err_b23.png Graphic file (type png)
+<use ./resources/runs_err_b23.png>
+Package pdftex.def Info: ./resources/runs_err_b23.png  used on input line 415.
+(pdftex.def)             Requested size: 487.8225pt x 224.3988pt.
+<./resources/modified_0-1_0-1_rand_noise_mapping.png, id=166, 722.7pt x 216.81pt>
+File: ./resources/modified_0-1_0-1_rand_noise_mapping.png Graphic file (type png)
+<use ./resources/modified_0-1_0-1_rand_noise_mapping.png>
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_noise_mapping.png  used on input line 427.
+(pdftex.def)             Requested size: 487.8225pt x 146.34705pt.
+<./resources/modified_0-1_0-1_rand_latent_space.png, id=167, 794.97pt x 216.81pt>
+File: ./resources/modified_0-1_0-1_rand_latent_space.png Graphic file (type png)
+<use ./resources/modified_0-1_0-1_rand_latent_space.png>
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_latent_space.png  used on input line 435.
+(pdftex.def)             Requested size: 487.8225pt x 133.04457pt.
+ [5 <./resources/pca_b2.png> <./resources/cos.png> <./resources/norm.png>] [6 <./resources/abs_err_b1234.png> <./resources/runs_err_b23.png>] [7 <./resources/modified_0-1_0-1_rand_noise_mapping.png> <./resources/modified_0-1_0-1_rand_latent_space.png>] (out/paper.bbl
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 18.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -922,7 +965,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--19
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . sciencedirect . com /
  []
 
-[7 <./resources/mnist-mod-autodiff-generative.png> <./resources/mnist-ord-autodiff-generative.png>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 40--46
 \OT1/ptm/m/n/10 (+20) doi: $https : / / doi . org / 10 . 1016 / j . compag . 2022 . 107208$.
  []
@@ -932,31 +975,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--46
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . sciencedirect . com /
  []
 
-) [8
+) [8]
+<./resources/modified_0-1_0-1_rand_samples.png, id=212, 722.7pt x 1084.05pt>
+File: ./resources/modified_0-1_0-1_rand_samples.png Graphic file (type png)
+<use ./resources/modified_0-1_0-1_rand_samples.png>
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_samples.png  used on input line 541.
+(pdftex.def)             Requested size: 390.25948pt x 585.39484pt.
+<./resources/pca_all.png, id=213, 650.43pt x 650.43pt>
+File: ./resources/pca_all.png Graphic file (type png)
+<use ./resources/pca_all.png>
+Package pdftex.def Info: ./resources/pca_all.png  used on input line 550.
+(pdftex.def)             Requested size: 487.8225pt x 487.83122pt.
+ [9
 
-] [9
-
-] (out/paper.aux)
+] [10 <./resources/modified_0-1_0-1_rand_samples.png>] [11 <./resources/pca_all.png>] (out/paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 39561 strings out of 474116
- 903561 string characters out of 5743683
- 1951187 words of memory out of 5000000
- 60994 multiletter control sequences out of 15000+600000
+ 39648 strings out of 474116
+ 905849 string characters out of 5743683
+ 1955187 words of memory out of 5000000
+ 61069 multiletter control sequences out of 15000+600000
  597458 words of font info for 249 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,131p,2153b,2126s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,131p,2153b,2130s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on out/paper.pdf (9 pages, 2523142 bytes).
+Output written on out/paper.pdf (11 pages, 5169273 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 55334 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 250 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 55359 words of extra memory for PDF output out of 61914 (max. 10000000)
 

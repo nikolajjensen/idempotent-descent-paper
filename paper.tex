@@ -113,7 +113,10 @@
 \usepackage{tikz-cd}
 \usepackage{wrapfig}
 \usepackage{subcaption}
-\usepackage{float}
+\usepackage{stfloats}
+%\usepackage{fixltx2e}
+%\usepackage{dblfloatfix}
+%\usepackage{nidanfloat}
 
 % The \icmltitle you define below is probably too long as a header.
 % Therefore, a short form for the running title is supplied here:
@@ -216,12 +219,10 @@ In section \ref{sec:method} we give a detailed description of the method used to
 \label{sec:method}
 %\textit{Outline the perturbation analysis which yielded the update rule. Jordan Normal form justification for looking at eigenvalues and for fixed-points. Stability analysis (and nice fractals) to argue that specific fixed-points are reached. Compare ordinary and modified autodiff by looking at derivative on a single-layer, non-bias network.}
 
-
-
-
 % (1 page)
 \subsection{An idea from Perturbation Theory}
 Perturbation Theory comprises methods for finding an approximate solution to a problem by starting from the exact solution of a related, simpler problem and adding successive ``perturbations'' to the system. It is a diverse set of tools used to reason about complex dynamical systems often used in physics and quantum chemistry \cite{hirschfelder-dev-perturb}. We refer the reader to Bla et el. \cite{intro-pertub-theory} for a detailed treatment of the topic.
+
 
 \begin{definition}[Near-idempotent to order $n$]
     Let the matrix $\vP \in \mathbb{R}^{m \times m}$ satisfy $\vP = \vP^2$. Let ${\vD \in \mathbb{R}^{m \times m}}$ be arbitrary (\textit{e.g.}, noise) where there exists some $n \in \mathbb{N}$ such that $\vD^{n+1}$ has coefficients with absolute value below $\epsilon \ll 1$. We then say that $\vK = \vP + \vD$ is \textbf{near-idempotent to order $n$}.
@@ -256,14 +257,11 @@ For $j>3$ there exists families of solutions (see Appendix \ref{app:solutions}),
 
 
 
-
-
-
 % (1 page)
 \subsection{Fixed Points and Stability Analysis}
 Undoubtedly, a required property of any idempotent corrector $g$ is that every idempotent matrix is a fixed point, but it may also be desirable to find if any non-idempotent matrices are fixed points. Concretely, we wish to characterize solutions to $\vK = 3 \vK^2 - 2 \vK^3$.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -305,7 +303,6 @@ where $d_\lambda$ denote the algebraic multiplicity of eigenvalue $\lambda$ of $
 \end{align*}
 hence any fixed point of $\vK = 3 \vK^2 - 2 \vK^3$ must have eigenvalues in this set. Consequently, all idempotent matrices are fixed points, but there exists also non-idempotent fixed points.
 
-
 Although the initial derivation of $g(\vK) = 3 \vK^2 - 2 \vK^3$ relies on $\vK$ being near-idempotent to the first order, we consider more generally the behaviour of $g$ around the fixed points when applied repeatedly as a recurrence relation. Note first that $h(\lambda) = 3\lambda^2 - 2\lambda^3$ has derivative $h'(\lambda) = 6\lambda - 6\lambda^2$, and so for each fixed point of $g$ we have
 \begin{align*}
     h'(0) = 0, \quad h'(0.5) = 1.5, \quad h'(1) = 0.
@@ -315,12 +312,13 @@ Since $|h'(\lambda)| < 1$ for $\lambda \in \{0, 1\}$ these points are attracting
 
 Furthermore, figure \ref{fig:fractal} shows the result of applying the idempotent corrector recursively 10 times for each point on the complex plane. The attracting regions around $0$ and $1$ are large, hence any matrix that is ``reasonably close'' to idempotent will be projected onto a (within machine precision) idempotent matrix.
 
-\begin{figure}[H]
+\begin{figure*}[!htp]
     \centering
-    \includegraphics[width=\columnwidth]{./resources/fractal.pdf}
+    \includegraphics[width=0.99\textwidth]{./resources/fractal.pdf}
     \caption{10-time recursive application of $h(\lambda) = 3\lambda^2 - 2\lambda^3$ for each point on the complex plane. Black areas denote points converging onto $0$, while orange areas denote points converging onto $1$.}
     \label{fig:fractal}
-\end{figure}
+\end{figure*}
+
 
 
 % (1 page)
@@ -346,6 +344,27 @@ To complete the scheme, we consider how a change in the output $\vy$ can be prop
 
 In practice, the definition \ref{eq:substitution} can be implemented in common machine learning frameworks, such as Jax\footnote{https://github.com/jax-ml/jax} and PyTorch\footnote{https://pytorch.org} as a user-defined automatic differentiation rule (see Appendix \ref{app:autodiff-rule}).
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{./resources/pca_b2.png}
+    \label{fig:pca-b2}
+    \caption{PCA analysis and projected optimizer trajectories for network B2.}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{./resources/cos.png}
+    \label{fig:cos-b2}
+    \caption{Cosine similarity of gradients over time of a representative training run with model B2.}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{./resources/norm.png}
+    \label{fig:norm-b2}
+    \caption{Norm of gradients over time of a representative training run with model B2.}
+\end{figure}
+
 % (3 pages)
 \section{Experimental Results}
 \label{sec:experiment}
@@ -365,7 +384,7 @@ To evaluate the training scheme suggested in section \ref{sec:method} we compare
             \hline
             B1                  & Linear(5,5)                                                                                                              & $30$                    \\
             \hline
-            B2                  & Linear(100, 250) \newline Linear(250, 250) \newline Linear(250, 250) \newline Linear(250, 250) \newline Linear(250, 100) & $238\,600$              \\
+            B2                  & Linear(128, 256) \newline Linear(256, 256) \newline Linear(256, 256) \newline Linear(256, 256) \newline Linear(256, 128) & $263\,296$              \\
             \hline
             B3                  & Linear(4096, 1024) \newline Linear(1024, 4096)                                                                           & $8\,393\,728$           \\
             \hline
@@ -379,6 +398,10 @@ To evaluate the training scheme suggested in section \ref{sec:method} we compare
 \end{table}
 
 The dataset used for training in this section is drawn from a normal distribution with mean $0$ and standard deviation $1$. To prevent concerns about overfitting, the distribution is sampled i.i.d. at each epoch during training. Furthermore, a batch size of $1000$ is used, although comparable results have been found using batch sizes between $32$ and $10\,000$.
+
+Runs which result in null matrices are filtered out (so are identities).
+
+Can we put more results for all networks for tanh and sigmoid in an appendix?
 
 \begin{figure*}[htbp]
     \centering
@@ -399,19 +422,34 @@ The dataset used for training in this section is drawn from a normal distributio
 \subsection{Application to Generative Networks}
 %\textit{We replicate the results of IGN on MNIST and CelebA. Latent space analysis. Takeaway is that we show application to a U-net GAN architecture based on Conv layers.}
 
-\begin{figure}
-    \centering     %%% not \center
-    \subfigure[Modified Backpropagation]{
-        \label{fig:gen-mnist-a}
-        \includegraphics[width=0.9\columnwidth]{./resources/mnist-mod-autodiff-generative.png}
-    }
-    \subfigure[Ordinary Backpropagation]{
-        \label{fig:gen-mnist-b}
-        \includegraphics[width=0.9\columnwidth]{./resources/mnist-ord-autodiff-generative.png}
-    }
-    \caption{U-DCGAN architecture trained on MNIST.}
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{./resources/modified_0-1_0-1_rand_noise_mapping.png}
     \label{fig:gen-mnist}
-\end{figure}
+    \caption{U-DCGAN architecture trained on MNIST. Random noise mappings.}
+\end{figure*}
+
+
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{./resources/modified_0-1_0-1_rand_latent_space.png}
+    \label{fig:latent-mnist}
+    \caption{U-DCGAN architecture trained on MNIST. Latent space linear interpolation.}
+\end{figure*}
+
+%\begin{figure}
+%    \centering     %%% not \center
+%    \subfigure[Modified Backpropagation]{
+%        \label{fig:gen-mnist-a}
+%        \includegraphics[width=0.9\columnwidth]{./resources/mnist-mod-autodiff-generative.png}
+%    }
+%    \subfigure[Ordinary Backpropagation]{
+%        \label{fig:gen-mnist-b}
+%        \includegraphics[width=0.9\columnwidth]{./resources/mnist-ord-autodiff-generative.png}
+%    }
+%    \caption{U-DCGAN architecture trained on MNIST.}
+%    \label{fig:gen-mnist}
+%\end{figure}
 
 \textit{TODO: Trim the above graph, no need to show 100 samples for each model.}
 
@@ -496,6 +534,23 @@ paper is later flagged for ethics review.
 \label{app:autodiff-rule}
 \textit{Describe the implementation of the autodiff rule in PyTorch. Show the code and the computational graph highlighting the differences between ordinary and modified backpropagation.}
 
+\section{Generative samples}
+\label{app:gen-samples}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./resources/modified_0-1_0-1_rand_samples.png}
+    \label{fig:big-gen-mnist}
+    \caption{U-DCGAN architecture trained on MNIST. 150 random samples.}
+\end{figure}
+
+\section{PCA analysis plots}
+\label{app:pca}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{./resources/pca_all.png}
+    \label{fig:big-pca}
+    \caption{Representative runs with PCA analysis and optimizer trajectory in the projected space.}
+\end{figure}
 
 \end{document}
 
