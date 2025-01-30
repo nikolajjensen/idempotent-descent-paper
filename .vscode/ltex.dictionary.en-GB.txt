@@ -2,3 +2,5 @@ denoising
 Eq
 backpropagation
 Shocher
+Uncurated
+MNIST

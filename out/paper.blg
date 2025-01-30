@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: paper.aux
+The style file: icml2025.bst
+Database file #1: bibliography.bib
+Warning--empty booktitle in hirschfelder-dev-perturb
+You've used 23 entries,
+            2773 wiz_defined-function locations,
+            746 strings with 9446 characters,
+and the built_in function-call counts, 11576 in all, are:
+= -- 991
+> -- 815
+< -- 9
++ -- 275
+- -- 252
+* -- 1019
+:= -- 1816
+add.period$ -- 84
+call.type$ -- 23
+change.case$ -- 151
+chr.to.int$ -- 23
+cite$ -- 47
+duplicate$ -- 444
+empty$ -- 863
+format.name$ -- 279
+if$ -- 2395
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 16
+newline$ -- 137
+num.names$ -- 92
+pop$ -- 309
+preamble$ -- 1
+purify$ -- 130
+quote$ -- 0
+skip$ -- 382
+stack$ -- 0
+substring$ -- 332
+swap$ -- 34
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 243
+warning$ -- 1
+while$ -- 85
+width$ -- 0
+write$ -- 324
+(There was 1 warning)
