@@ -184,37 +184,38 @@
 % \textit{Introduce the idea of idempotent neural networks; give the definition. Justification for usefulness in applications where solutions can be both idempotent and not, and where the idempotent solution may be beneficial. Give a brief overview of the rest of the paper.}
 
 % Wider context -> Idempotent networks
-Using neural networks as data augmentation tools is becoming more widespread in areas such as signal processing and generative artificial intelligence. In particular, networks of the form ${f: X \to X}$, mapping data within the same space $X$, are frequently used in image augmentation \cite{lu-image-aug}, video generation \cite{ma-compression, liu-gans}, sorting algorithms \cite{tambouratzis-sorting}, compression algorithms \cite{namphol-compression, liu-gans}, image denoising \cite{mao-deblurring, ilesanmi-denoising, liu-gans}, and image generation \cite{liu-gans}, among others. While there is a variety of such transformation tasks, some of these can be considered \textit{intrinsically idempotent} in the sense that any function which carries out the transformation is necessarily an idempotent operator. An idempotent operation is one which can be applied iteratively with no effect beyond the first application. For instance, a sorting transformation is intrinsically idempotent since sorting an already sorted data structure is redundant and such a sorting is often deterministic. On the other hand, image transformations might not always be idempotent: rotating an image by 90$^{\circ}$ twice is not the same as rotating it once, for instance. As such, some transformations are intrinsically idempotent and admit \textit{only} idempotent solutions while other tasks are not and admit \textit{no} idempotent solutions. This work, however, is concerned with a class of data transformation tasks which has both idempotent and non-idempotent solutions and where idempotency might be a desirable property. For example, in section \ref{sec:experiment} we study idempotency in generative networks where it is the formal requirement of one-step inference, but also denoising and image augmentation (e.g., application of effect-filters) are examples of tasks where idempotent solutions may be desirable \cite{mao-deblurring,liu-gans}. Since solutions are not intrinsically idempotent in this class, we explore actively enforcing idempotency as a component of the loss function used in training.
+Using neural networks as data augmentation tools is becoming more widespread in areas such as signal processing and generative artificial intelligence. In particular, networks of the form ${f: X \to X}$, mapping data within the same space $X$, are frequently used in image augmentation \cite{lu-image-aug}, video generation \cite{ma-compression, liu-gans}, sorting algorithms \cite{tambouratzis-sorting}, compression algorithms \cite{namphol-compression, liu-gans}, image denoising \cite{mao-deblurring, ilesanmi-denoising, liu-gans}, and image generation \cite{liu-gans}, among others. While there is a variety of such transformation tasks, some of these can be considered \textit{intrinsically idempotent} in the sense that any function which carries out the transformation is necessarily an idempotent operator. An idempotent operation is one which can be applied iteratively with no effect beyond the first application. For instance, a sorting transformation is intrinsically idempotent since sorting an already sorted data structure is redundant and such a sorting is often deterministic. On the other hand, image transformations might not always be idempotent: rotating an image by 90$^{\circ}$ twice is not the same as rotating it once, for instance. As such, some transformations are intrinsically idempotent and admit \textit{only} idempotent solutions while other tasks are not and admit \textit{no} idempotent solutions. This work, however, is concerned with a class of data transformation tasks which has both idempotent and non-idempotent solutions and where idempotency might be a desirable property. For example, in Section \ref{sec:experiment} we study idempotency in generative networks where it is the formal requirement of one-step inference, but also denoising and image augmentation (\textit{e.g.}, application of effect-filters) are examples of tasks where idempotent solutions may be desirable \cite{mao-deblurring,liu-gans}. Since solutions are not intrinsically idempotent in this class, we explore actively enforcing idempotency as a component of the loss function used in training.
 
 % What is an idempotent network even?
-In this paper we are primarily concerned with networks $f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n$, where $\vtheta$ is a collection of weight parameters. The condition that $f_{\theta}$ is idempotent is
+In this paper we are primarily concerned with networks ${f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n}$, where $\vtheta$ is a collection of weight parameters. The condition that $f_{\vtheta}$ is idempotent is
 %
 \begin{equation}
-    f_{\vtheta}(\vx) = f_{\vtheta}(f_{\vtheta}(\vx))
+    f_{\vtheta}(\vx) = f_{\vtheta}(f_{\vtheta}(\vx)),
     \label{eq:idem}
 \end{equation}
 %
-for all $\vx \in \mathbb{R}^n$. If $f_{\vtheta}(\vx) = \vW \vx$ (a single-layer, fully-connected network with no bias and the identity activation function) where $\vW \in \mathbb{R}^{n \times n}$ is the weight matrix, then condition \ref{eq:idem} reduces to the familiar notion from linear algebra where $\vW = \vW^2$ and eigenvalues of $\vW$ are either 0 or 1. Condition \ref{eq:idem} also gives the correct notion for non-linear networks acting as idempotent projections, and can be optimized using a simple mean-squared error loss,
+for all ${\vx \in \mathbb{R}^n}$. If ${f_{\vtheta}(\vx) = \vW \vx}$ (a single-layer, fully-connected network with no bias and the identity activation function) where ${\vW \in \mathbb{R}^{n \times n}}$ is the weight matrix, then condition (\ref{eq:idem}) reduces to the familiar notion from linear algebra where $\vW = \vW^2$ and eigenvalues of $\vW$ are either 0 or 1. Condition (\ref{eq:idem}) also gives the correct notion for non-linear networks acting as idempotent projections, and can be optimized using a simple mean-squared error loss
 %
 \begin{align}
     \mathcal{L}_\text{idem}(\vx) = \frac{1}{m} \sum_{i = 1}^m \left(f_{\vtheta}(f_{\vtheta}(\vx)) - f_{\vtheta}\big(\vx \big)\right)^2,
     \label{eq:idem-loss}
 \end{align}
 %
-where $\vx \in \mathbb{R}^{n}$. As we show in section \ref{sec:experiment}, minimizing this loss using canonical gradient descent can yield relatively poor improvement in the idempotent loss. Additionally, due to the higher-order application of $f_{\vtheta}$ the number of terms in the gradient $\nabla_{\vtheta} \mathcal{L}_{\text{idem}}$ grows exponentially in the number of layers, making the approach computationally expensive for certain architectures.
+where ${\vx \in \mathbb{R}^{n}}$. As we show in Section \ref{sec:experiment}, minimizing this loss using canonical gradient descent can yield relatively poor improvement in the idempotent loss. Additionally, due to the higher-order application of $f_{\vtheta}$ the number of terms in the gradient ${\nabla_{\vtheta} \mathcal{L}_{\text{idem}}}$ grows exponentially in the number of layers, making the approach computationally expensive for certain architectures.
 
 % What are we proposing in this paper?
-In this work, we propose an alternative method for training neural networks to satisfy condition \ref{eq:idem}. Using ideas from Perturbation Theory \cite{intro-pertub-theory} we derive a function $g$ which solves $\vK' = g(\vK)$ such that if $\vK \in \mathbb{R}^{n \times n}$ is an ``almost'' idempotent matrix, then $\vK' \in \mathbb{R}^{n \times n}$ is perfectly idempotent (i.e., $(\vK')^2 = \vK'$). In this work, we focus on one such function:
+In this work, we propose an alternative method for training neural networks to satisfy condition (\ref{eq:idem}). Using ideas from Perturbation Theory \cite{intro-pertub-theory} we derive a function $g$ which solves ${\vK' = g(\vK)}$ such that if ${\vK \in \mathbb{R}^{n \times n}}$ is an ``almost'' idempotent matrix, then ${\vK' \in \mathbb{R}^{n \times n}}$ is perfectly idempotent (\textit{i.e.}, ${(\vK')^2 = \vK'}$). In this work, we focus on one such function:
 %
 \begin{equation}
-    g(\vK) = 3 \vK^2 - 2 \vK^3
+    g(\vK) = 3 \vK^2 - 2 \vK^3.
     \label{eq:g}
 \end{equation}
-%
-Although we assume $\vK$ is close to idempotent, we show that in practice $g$ can be used to derive matrices which are within machine precision of perfect idempotency even when the input matrix $\vK$ is relatively far from idempotent. At a high level, this process is based on a recurrence relation ${\vK' \leftarrow (1 - \gamma)\vK + \gamma g(\vK)}$, taking small $\gamma$-sized steps in the direction of $g(\vK)$. While this recurrence relation derives idempotent matrices -- and can therefore be used to train single-layer networks with identity activations to be idempotent -- we also give a more general application of Eq. \ref{eq:g} as a minor modification of the backpropagation algorithm, yielding an architecture agnostic and efficient algorithm for finding idempotent networks.
+
+
+Although we assume $\vK$ is close to idempotent, we show that in practice $g$ can be used to derive matrices which are within machine precision of perfect idempotency even when the input matrix $\vK$ is relatively far from idempotent. At a high level, this process is based on a recurrence relation ${\vK' = \vK + \gamma(g(\vK) - \vK)}$, taking small $\gamma$-sized steps in the direction of $g(\vK)$. While this recurrence relation derives idempotent matrices -- and can therefore be used to train single-layer networks with identity activations to be idempotent -- we also give a more general application of Eq. (\ref{eq:g}) as a modification of the backpropagation algorithm, yielding an architecture agnostic and efficient algorithm for finding idempotent networks.
 
 % Outline of each section of the paper
-In section \ref{sec:method} we give a detailed description of the method used to derive Eq. \ref{eq:g} and alternative solutions. We also show that while there exists non-idempotent fixed points to Eq. \ref{eq:g}, these points are repelling under the recurrence relation ${\vK' \leftarrow (1 - \gamma)\vK + \gamma g(\vK)}$ for $0 \leq \gamma < 1$, giving credence to the use of such a recurrence relation in practice. Finally, in section \ref{sec:method} we derive a full training scheme for training arbitrary neural network architectures of the form $f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n$. In section \ref{sec:experiment}, we present experimental data for a variety of fully-connected network architectures, showing that our method outperforms ordinary backpropagation under varied conditions. We also replicate the results of \cite{shocher-ign} by applying our method on a U-net style DCGAN network to successfully create a generative network for the MNIST dataset. Lastly, sections \ref{sec:related} and \ref{sec:conclusion} discuss how our method distinguishes itself from related approaches as well as practical limitations of our method.
+In Section \ref{sec:method-idea} we give a detailed description of the method used to derive Eq. (\ref{eq:g}) and alternative solutions. We also show that while there exists non-idempotent fixed points to Eq. (\ref{eq:g}), these points are repelling under the recurrence relation ${\vK' = \vK + \gamma(g(\vK) - \vK)}$ for $0 \leq \gamma \leq 1$, giving credence to the use of such a recurrence relation in practice. Finally, in Section \ref{sec:method-scheme} we derive a full training scheme for training arbitrary neural network architectures of the form ${f_{\vtheta}: \mathbb{R}^n \to \mathbb{R}^n}$. In Section \ref{sec:experiment}, we present experimental data for a variety of fully-connected network architectures, showing that our method outperforms ordinary backpropagation under varied conditions. We also replicate the results of \citealt{shocher-ign} by applying our method on a U-net style DCGAN network to successfully create a generative network for the MNIST dataset. Lastly, Sections \ref{sec:related} and \ref{sec:conclusion} discuss how our method distinguishes itself from related approaches as well as future work.
 
 % (3 pages)
 \section{Method}
@@ -223,45 +224,39 @@ In section \ref{sec:method} we give a detailed description of the method used to
 
 % (1 page)
 \subsection{An idea from Perturbation Theory}
+\label{sec:method-idea}
 Perturbation Theory comprises methods for finding an approximate solution to a problem by starting from the exact solution of a related, simpler problem and adding successive ``perturbations'' to the system. It is a diverse set of tools used to reason about complex dynamical systems often used in physics and quantum chemistry \cite{hirschfelder-dev-perturb}. We refer the reader to \cite{intro-pertub-theory} for a detailed treatment of the topic.
 
+We first define the central term \textit{near-idempotent}, used throughout:
 
 \begin{definition}[\textbf{Near-idempotent to order $n$}]
-    Let the matrix $\vP \in \mathbb{R}^{m \times m}$ satisfy $\vP = \vP^2$. Let ${\vD \in \mathbb{R}^{m \times m}}$ be arbitrary (\textit{e.g.}, noise) where there exists some $n \in \mathbb{N}$ such that $\vD^{n+1}$ has coefficients with absolute value below $\epsilon \ll 1$. We then say that $\vK = \vP + \vD$ is \textbf{near-idempotent to order $n$}.
+    Let the matrix ${\vP \in \mathbb{R}^{m \times m}}$ satisfy ${\vP = \vP^2}$. Let ${\vD \in \mathbb{R}^{m \times m}}$ be arbitrary (\textit{e.g.}, noise) where there exists some ${n \in \mathbb{N}}$ such that $\vD^{n+1}$ has coefficients with absolute value below $\epsilon \ll 1$. We say that ${\vK = \vP + \vD}$ is \textbf{near-idempotent to order $n$}.
     \label{def:near-idem}
 \end{definition}
 
-Using definition \ref{def:near-idem} we may define the following ansatz in terms of a \textit{near-idempotent} $\vK$:
+Using definition \ref{def:near-idem} we may define the following ansatz in terms of a near-idempotent $\vK$:
 %
 \begin{align}
     \vK' = \alpha_1 \vK + \alpha_2 \vK^2 + \cdots + \alpha_j \vK^j.
     \label{eq:ansatz}
 \end{align}
 %
-This poses $\vK'$ as the linear combination of higher orders of near-idempotent matrices. If we further constrain $(\vK')^2 - \vK' = \bm{0}$, the result is a linear program in variables $\alpha_i$. Importantly, for all equations of the program, any term in which $\vD$ appears at least $n+1$ times can be considered ``negligible'' and ignored. This simplification vastly reduces the problem and allows approximate solutions to the linear program. The coefficients $\alpha_i$ can be thought of as parameterizing a projection $g$ such that $\vK' = g(\vK)$ for an arbitrary near-idempotent $\vK$. The requirement that $\vK'$ be idempotent and that $\vK$ is only near-idempotent implies that a solution $g$ is a projection onto the manifold of idempotent matrices; we call $g$ an \textbf{idempotent corrector} as it must ``make $\vK$ idempotent''.
+This poses $\vK'$ as the linear combination of higher orders of near-idempotent matrices. If we further constrain ${(\vK')^2 - \vK' = \bm{0}}$, the result is a linear program in variables $\alpha_i$. Importantly, for all equations of the program, any term in which $\vD$ appears at least $n+1$ times can be considered ``negligible'' and ignored. This simplification vastly reduces the problem and allows approximate solutions to the linear program. The coefficients $\alpha_i$ can be thought of as parameterizing a projection $g$ such that ${\vK' = g(\vK)}$ for an arbitrary near-idempotent $\vK$. The requirement that $\vK'$ be idempotent and that $\vK$ is only near-idempotent implies that a solution $g$ is a projection onto the manifold of idempotent matrices; we call $g$ an \textbf{idempotent corrector} as it must ``make $\vK$ idempotent''.
 
 Note that definition \ref{def:near-idem} places no restrictions on the distribution from which $\vD$ is drawn, hence $\vK$ and the underlying $\vP$ have no meaningful relation. Similarly, the linear program above also places no assumptions on the relationship between $\vK'$ and $\vK$.
 
-In the case when $n=1$ we consider $\vD^2 \approx \bm{0}$ and the expression $(\vK')^2 - \vK' = \bm{0}$ can be expanded and reduced by recursively applying the assumptions
-%
-\begin{align*}
-    \vD^2 \approx \bm{0}, \quad \vP^2 = \vP, \quad \vX \vD \vY \vD \vZ \approx \bm{0} \mathrm{~for~all~} \vX,\vY,\vZ
-\end{align*}
-%
-In the case when $j\leq2$, i.e., the ansatz in eq. \ref{eq:ansatz} is $\vK' = \alpha_1 \vK + \alpha_2 \vK^2$, there exists no solutions for $\alpha_i$. When $j=3$, however, there is exactly one solution when $\alpha_1 = 0$, $\alpha_2 = 3$ and $\alpha_3 = -2$, hence $g$ is
+In the case when $n=1$ we consider ${\vD^2 \approx \bm{0}}$ and the expression ${(\vK')^2 - \vK' = \bm{0}}$ can be expanded and reduced by recursively applying the assumptions
 %
 \begin{align}
-    g(\vK) = 3\vK^2 - 2 \vK^3
-    \label{eq:}
+    \vD^2 \approx \bm{0}, \quad \vP^2 = \vP, \quad \vX \vD \vY \vD \vZ \approx \bm{0},
 \end{align}
 %
-For $j>3$ there exists families of solutions (see Appendix \ref{app:solutions}), but we consider primarily the case when $j=3$ as this requires fewer higher-order terms of $\vK$.
-
-
+for all $\vX,\vY,\vZ$ matrices. When $j\leq2$, \textit{i.e.}, the ansatz in Eq. (\ref{eq:ansatz}) is ${\vK' = \alpha_1 \vK + \alpha_2 \vK^2}$, there exists no solutions for $\alpha_i$. When $j=3$, however, there is exactly one solution when ${\alpha_1 = 0}$, ${\alpha_2 = 3}$ and ${\alpha_3 = -2}$, thus $g$ is as defined in Eq. (\ref{eq:g}). For $j>3$ there exists families of solutions (see Appendix \ref{app:solutions}), but we consider primarily the case when $j=3$ as this requires fewer higher-order terms of $\vK$ and is therefore generally less costly to compute.
 
 % (1 page)
 \subsection{Fixed Points and Stability Analysis}
-Undoubtedly, a required property of any idempotent corrector $g$ is that every idempotent matrix is a fixed point, but it may also be desirable to find if any non-idempotent matrices are fixed points. Concretely, we wish to characterize solutions to $\vK = 3 \vK^2 - 2 \vK^3$.
+\label{sec:method-fixed-stab}
+Undoubtedly, a required property of any idempotent corrector $g$ is that every idempotent matrix is a fixed point, but it may also be desirable to find if any non-idempotent matrices are fixed points. Concretely, we wish to characterize solutions to ${\vK = 3 \vK^2 - 2 \vK^3}$.
 
 \begin{figure}[h]
     \centering
@@ -284,14 +279,14 @@ Undoubtedly, a required property of any idempotent corrector $g$ is that every i
     \label{fig:plot-g}
 \end{figure}
 
-In general, we place no restrictions on the matrix $\vK \in \mathbb{R}^{m \times m}$, hence it might not be diagonalizable directly. It is well known, however, that for every square matrix $\vK$ there exists an invertible matrix $\vP$ such that
-\begin{align*}
+In general, we place no restrictions on the matrix ${\vK \in \mathbb{R}^{m \times m}}$. In particular, it might not be directly diagonalizable. It is well known, however, that for every square matrix $\vK$ there exists an invertible matrix $\vP$ such that
+\begin{align}
     \vK = \vP \vJ \vP^{-1}
-\end{align*}
-where $\vJ \in \mathbb{C}^{m \times m}$ is the Jordan Normal form \cite{jordan-form} of $\vK \in \mathbb{R}^{m \times m}$. From this the dual problem,
-\begin{align*}
+\end{align}
+where $\vJ \in \mathbb{C}^{m \times m}$ is the Jordan normal form \cite{jordan-form} of ${\vK \in \mathbb{R}^{m \times m}}$. From this the dual problem,
+\begin{align}
     \vJ = 3 \vJ^2 - 2 \vJ^3,
-\end{align*}
+\end{align}
 can be constructed. The block-diagonal structure of $\vJ$ imposes up to four equations per eigenvalue of $\vK$ (see Appendix \ref{app:jordan}):
 \begin{align}
     \lambda & = 3\lambda^2 - 2\lambda^3 & \label{eq:cond1}                                   \\
@@ -299,20 +294,22 @@ can be constructed. The block-diagonal structure of $\vJ$ imposes up to four equ
     0       & = 3 - 6\lambda            & \text{Only when $d_\lambda\geq3$.}\label{eq:cond3} \\
     0       & = 0 - 2                   & \text{Only when $d_\lambda\geq4$.}\label{eq:cond4}
 \end{align}
-where $d_\lambda$ denote the algebraic multiplicity of eigenvalue $\lambda$ of $\vK$. Clearly, this system of equations is inconsistent when $d_{\lambda} \geq 2$, hence geometric multiplicity of every eigenvalue must also be exactly 1. Together this implies that $\vJ$ is diagonalizable for any fixed point $\vK$. Furthermore, the solutions which satisfy only eq. \ref{eq:cond1} are
-\begin{align*}
-    \lambda \in \{0, 0.5, 1\}
-\end{align*}
-hence any fixed point of $\vK = 3 \vK^2 - 2 \vK^3$ must have eigenvalues in this set. Consequently, all idempotent matrices are fixed points, but there exists also non-idempotent fixed points.
+where $d_\lambda$ denotes the algebraic multiplicity of eigenvalue $\lambda$ of $\vK$. Clearly, this system of equations is inconsistent when ${d_{\lambda} \geq 2}$, hence geometric multiplicity of every eigenvalue must also be exactly 1. Together this implies that $\vJ$ is diagonalizable for any fixed point $\vK$. Furthermore, the solutions which satisfy only Eq. (\ref{eq:cond1}) are:
+%
+\begin{align}
+    \lambda \in \{0, 0.5, 1\}.
+\end{align}
 
-Although the initial derivation of $g(\vK) = 3 \vK^2 - 2 \vK^3$ relies on $\vK$ being near-idempotent to the first order, we consider more generally the behaviour of $g$ around the fixed points when applied repeatedly as a recurrence relation. Note first that $h(\lambda) = 3\lambda^2 - 2\lambda^3$ has derivative $h'(\lambda) = 6\lambda - 6\lambda^2$, and so for each fixed point of $g$ we have
-\begin{align*}
+Therefore, any fixed point of ${\vK = 3 \vK^2 - 2 \vK^3}$ must have eigenvalues in this set. Consequently, all idempotent matrices are fixed points, but there exists also non-idempotent fixed points.
+
+Although the initial derivation of ${g(\vK) = 3 \vK^2 - 2 \vK^3}$ relies on $\vK$ being near-idempotent to the first order, we consider more generally the behaviour of $g$ around the fixed points when applied repeatedly as a recurrence relation. Let ${h(\lambda) = 3\lambda^2 - 2\lambda^3}$ and observe its derivative ${h'(\lambda) = 6\lambda - 6\lambda^2}$. Then, for each fixed point of $g$ we have
+\begin{align}
     h'(0) = 0, \quad h'(0.5) = 1.5, \quad h'(1) = 0.
-\end{align*}
+\end{align}
 
-Since $|h'(\lambda)| < 1$ for $\lambda \in \{0, 1\}$ these points are attracting whilst $|h'(\lambda)| > 1$ for $\lambda = 0.5$, hence this point is repelling. In other words, if the idempotent corrector $g$m applied as a recurrence relation on $\vK$, converges at some point $\vK'$, then $\vK'$ will be approximately idempotent unless $\vK$ has an eigenvalue of exactly $0.5$.
+Since ${|h'(\lambda)| < 1}$ for ${\lambda \in \{0, 1\}}$ these points are attracting whilst ${|h'(\lambda)| > 1}$ for ${\lambda = 0.5}$, thus this point is repelling. In other words, if the idempotent corrector $g$, applied as a recurrence relation on $\vK$, converges at some point $\vK'$, then $\vK'$ will be approximately idempotent unless $\vK$ has an eigenvalue of exactly $0.5$.
 
-Furthermore, figure \ref{fig:fractal} shows the result of applying the idempotent corrector recursively 10 times for each point on the complex plane. The attracting regions around $0$ and $1$ are large, hence any matrix that is ``reasonably close'' to idempotent will be projected onto a (within machine precision) idempotent matrix.
+Furthermore, Figure \ref{fig:fractal} shows the result of applying the idempotent corrector recursively 10 times for each point on the complex plane. The attracting regions around $0$ and $1$ are large, hence any matrix that is ``reasonably close'' to idempotent will be projected onto a (within machine precision) idempotent matrix.
 
 \begin{figure*}[!htp]
     \centering
@@ -321,31 +318,35 @@ Furthermore, figure \ref{fig:fractal} shows the result of applying the idempoten
     \label{fig:fractal}
 \end{figure*}
 
-
+Whilst this only technically applies in the linearized setting, we propose to also apply the method in non-linear settings using the recurrence relation
+%
+\begin{align}
+    \vK' = \vK + \gamma(g(\vK) - \vK)
+\end{align}
+%
+for $0 \leq \gamma \leq 1$. This has the effect of taking small $\gamma$-sized steps in the direction of $g$ at every time point.
 
 % (1 page)
 \subsection{Deriving a Training Scheme}
 \label{sec:method-scheme}
-Gradient-based optimization techniques use the gradient of a non-convex loss function as the directional information used to update the hypothesis at each time step. This highlights a core difference between our approach and conventional gradient-based approaches, since the recurrence relation derived above (and shown in figure \ref{fig:plot-g}) exactly describes the ``direction'' to move in to reduce idempotent error. Out method only \textit{evaluates} $g$ -- finding its derivative is unimportant.
+Gradient-based optimization techniques use the gradient of an often non-convex loss function as the directional information used to update the hypothesis at each time step. This highlights a core difference between our approach and conventional gradient-based approaches, since the recurrence relation derived above (and shown in Figure \ref{fig:plot-g}) exactly describes the ``direction'' to move in to reduce idempotent error. Our method need only \textit{evaluate} $g$ -- finding its derivative is unimportant.
 
-Consider a neural network $f_{\vtheta}: \mathbb{R}^m \to \mathbb{R}^m$ together with its application to input $\vx \in \mathbb{R}^m$, denoted $\vy = f_{\vtheta}(\vx)$. We might then consider the recurrence relation above in the following form:
+Consider a neural network ${f_{\vtheta}: \mathbb{R}^m \to \mathbb{R}^m}$ together with its application to input ${\vx \in \mathbb{R}^m}$, denoted ${\vy = f_{\vtheta}(\vx)}$. We might then consider the recurrence relation in Eq. (\ref{eq:g}) in the following form:
 %
-\begin{align*}
+\begin{align}
     \vy' = 3f_{\vtheta}(\vy) - 2f_{\vtheta}(f_{\vtheta}(\vy))
-\end{align*}
+\end{align}
 %
-This describes a desired change in the output of the network which we denote ${\Delta f_{\vtheta}(\vx) = \vy' - \vy}$. In other words, $\Delta f_{\vtheta}(\vx)$ describes the desired change in $\vy$ which moves $\vy$ towards an idempotent projection much in the same way that the quantity $\pd{(-\mathcal{L}(\vy))}{\vy}$ describes the direction which reduces the idempotent loss function $\mathcal{L}(\vy)$ in eq. \ref{eq:idem-loss}. In this work, we therefore define
+This describes a desired change in the output of the network which we denote ${\Delta f_{\vtheta}(\vx) = \vy' - \vy}$. In other words, ${\Delta f_{\vtheta}(\vx)}$ describes the change in $\vy$ which moves $\vy$ towards an idempotent projection much in the same way that the quantity $\pd{(-\mathcal{L}_{\mathrm{idem}}(\vy))}{\vy}$ describes the direction which reduces the idempotent loss function $\mathcal{L}_{\mathrm{idem}}(\vy)$ in Eq. (\ref{eq:idem-loss}). A central idea presented in this work is therefore the definition
 %
 \begin{align}
     \pd{(-\mathcal{L}(\vy))}{\vy} \equiv \Delta f_{\vtheta}(\vx)
     \label{eq:substitution}
 \end{align}
 %
-as an alternative quantity to the traditional, analytical solution to $\pd{(-\mathcal{L}(\vy))}{\vy}$.
+as an alternative quantity to the traditional, analytical solution to $\pd{(-\mathcal{L}(\vy))}{\vy}$. To complete the scheme, we consider how a change in the output $\vy$ can be propagated to a change in the parameters $\vtheta$ of $f_{\vtheta}$. This, however, is a straightforward application of the chain rule as it is calculated conventionally in backpropagation. We use the term ``\textbf{Modified Backpropagation}'' to refer to the canonical backpropagation algorithm with the rule (\ref{eq:substitution}) applied appropriately when computing gradients.
 
-To complete the scheme, we consider how a change in the output $\vy$ can be propagated to a change in the parameters $\vtheta$ of $f_{\vtheta}$. This, however, is a straightforward application of the chain rule as it is calculated conventionally in backpropagation.
-
-In practice, the definition \ref{eq:substitution} can be implemented in common machine learning frameworks, such as Jax\footnote{https://github.com/jax-ml/jax} and PyTorch\footnote{https://pytorch.org} as a user-defined automatic differentiation rule (see Appendix \ref{app:autodiff-rule}).
+In practice, the definition (\ref{eq:substitution}) can be implemented in common machine learning frameworks, such as Jax\footnote{https://github.com/jax-ml/jax} and PyTorch\footnote{https://pytorch.org} as a user-defined automatic differentiation rule (see Appendix \ref{app:autodiff-rule}).
 
 % (3 pages)
 \section{Experimental Results}
@@ -355,7 +356,7 @@ In practice, the definition \ref{eq:substitution} can be implemented in common m
 % Error across LR for B3&B4
 % Error across Runs for B3&B4
 % (PCA analysis graphs)
-To evaluate the training scheme suggested in section \ref{sec:method} we compare relative performance between the two methods: ``Ordinary Backpropagation'' with the quantity $\pd{(-\mathcal{L}(\vy))}{\vy}$ resolved at runtime by automatic differentiation, and ``Modified Backpropagation'' with the modified backpropagation rule for $\pd{(-\mathcal{L}(\vy))}{\vy}$. To demonstrate the flexibility of the approach, we report results for four diverse MLP-style networks, as described in table \ref{tab:networks}.
+To evaluate the training scheme suggested in Section \ref{sec:method-scheme} we compare relative performance between the two methods: ``Ordinary Backpropagation'' with the quantity $\pd{(-\mathcal{L}(\vy))}{\vy}$ resolved at runtime by automatic differentiation, and ``Modified Backpropagation'' with the modified backpropagation rule for $\pd{(-\mathcal{L}(\vy))}{\vy}$. To demonstrate the flexibility of the approach, we report results for four diverse MLP-style networks, as described in table \ref{tab:networks}.
 
 \begin{table}[htbp]
     \begin{center}
@@ -393,35 +394,35 @@ In this section we present suggestive evidence that Modified Backpropagation sea
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\columnwidth]{./resources/pca_b2.png}
-    \caption{Representative projections of the optimizer trajectories over 2500 epochs of either algorithm on the B2 model at optimal learning rates (fig. \ref{fig:avg-abs-err}). Total variance captured is $>97.8\%$ with cosine similarity of PC1 and PC2 less than $1.0\times10^{-6}$. Optimizer trajectory of Modified Backpropagation deviates significantly from Ordinary Backpropagation.}
+    \caption{Representative projections of the optimizer trajectories over 2500 epochs of either algorithm on the B2 model at optimal learning rates (Figure \ref{fig:avg-abs-err}). Total variance captured is $>97.8\%$ with cosine similarity of PC1 and PC2 less than $1.0\times10^{-6}$. Optimizer trajectory of Modified Backpropagation deviates significantly from Ordinary Backpropagation.}
     \label{fig:pca-b2}
 \end{figure}
 
-For purposes of visualization, we employ the method of \cite{li-visualizing} to compare the optimizer trajectories of Modified Backpropagation and Ordinary Backpropagation. Concretely, we train a copy of the same network with either algorithm and record model parameters $\vtheta_t^{\mathrm{MB}}$ and $\vtheta_t^{\mathrm{OB}}$ at epoch $t$. A PCA analysis is then performed over the relative change in parameters from $\vtheta_0^{\mathrm{MB}}$ and $\vtheta_0^{\mathrm{OB}}$ (which are identical), from which we select the two most explanatory directions. An example is shown in figure \ref{fig:pca-b2} (and Appendix \ref{app:pca}).
+For purposes of visualization, we employ the methods of \citealt{li-visualizing} to compare the optimizer trajectories of Modified Backpropagation and Ordinary Backpropagation. Concretely, we train a copy of the same network with either algorithm and record model parameters $\vtheta_t^{\mathrm{MB}}$ and $\vtheta_t^{\mathrm{OB}}$ at epoch $t$. A PCA analysis is then performed over the relative change in parameters from $\vtheta_0^{\mathrm{MB}}$ and $\vtheta_0^{\mathrm{OB}}$ (which are identical), from which we select the two most explanatory directions. Lastly, the loss landscape and trajectory paths $\vtheta_t^{\mathrm{MB}}$ and $\vtheta_t^{\mathrm{OB}}$ are projected onto the selected dimensions. An example is shown in Figure \ref{fig:pca-b2} (and Appendix \ref{app:pca}).
 
-Qualitative evaluation show that Modified and Ordinary Backpropagation often differ significantly in projected trajectories across the two most explanatory directions, but this is not always the case (e.g., B4 in figure \ref{fig:big-pca}). Additionally, optimization trajectories for Modified Backpropagation can be explained by projection onto two direction with more than $90\%$ variance explained, indicating that it exhibits the same behaviour as Ordinary Backpropagation which has previously been shown to largely operate in low-dimensional subspaces \cite{li-visualizing}. One should note, however, that the loss surface is here represented under a dramatic dimensionality reduction which makes further conclusions unreliable.
+Qualitative evaluation show that Modified and Ordinary Backpropagation often differ significantly in projected trajectories across the two most explanatory directions, but this is not always the case (\textit{e.g.}, B4 in Figure \ref{fig:big-pca}). Additionally, optimization trajectories for Modified Backpropagation can be explained by projection onto two direction with more than $90\%$ variance explained, indicating that it exhibits the same behaviour as Ordinary Backpropagation which has previously been suggested to largely operate in low-dimensional subspaces \cite{li-visualizing,song-subspaces}. One should note, however, that the loss surface is here represented under a dramatic dimensionality reduction which makes further conclusions unreliable.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\columnwidth]{./resources/cos.png}
-    \caption{Absolute cosine similarity of gradients over time of a representative training run with model B2. ``Along OB'' optimizes the network with Ordinary Backpropagation and compare at each timepoint with suggested gradient from Modified Backpropagation. ``Along MB'' optimizes the network with Modified Backpropagation and compares with suggested gradient from Ordinary Backpropagation. ``Separate'' compares gradients of each optimizer as they independently optimize the network. Gradients suggested by Modified Backpropagation remains significantly different from those suggested by Ordinary Backpropagation.}
+    \caption{Absolute cosine similarity of gradients over time of a representative training run with model B2. ``Along OB'' optimizes the network with Ordinary Backpropagation and compares at each timepoint with suggested gradient from Modified Backpropagation. ``Along MB'' optimizes the network with Modified Backpropagation and compares with suggested gradient from Ordinary Backpropagation. ``Separate'' compares gradients of each optimizer as they independently optimize the network. Gradients suggested by Modified Backpropagation remains significantly different from those suggested by Ordinary Backpropagation.}
     \label{fig:cos-b2}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\columnwidth]{./resources/norm.png}
-    \caption{Norm of gradients over time of a representative training run with model B2. The network is optimized independently by either algorithm at optimal learning rates (fig. \ref{fig:avg-abs-err}). Modified Backpropagation gives consistently stronger gradient signal than Ordinary Backpropagation.}
+    \caption{Norm of gradients over time of a representative training run with model B2. The network is optimized independently by either algorithm at optimal learning rates (Figure \ref{fig:avg-abs-err}). Modified Backpropagation gives consistently stronger gradient signal than Ordinary Backpropagation.}
     \label{fig:norm-b2}
 \end{figure}
 
-We now investigate how the gradients produced by Modified Backpropagation differ from those produced by Ordinary Backpropagation. We give here an analysis over a single training run on network B2, but similar results hold for all networks in table \ref{tab:networks} over repetitions of the experiment. As figure \ref{fig:cos-b2} shows, gradients suggested by either algorithm remain relatively dissimilar throughout training, which further indicates a difference in the expected optimization trajectory. Furthermore, as evidenced by figures \ref{fig:pca-b2} and \ref{fig:cos-b2}, Modified Backpropagation travels faster (i.e., gives stronger gradient signal) than Ordinary Backpropagation, even when optimal learning rates are selected for both algorithms.
+We now investigate how the gradients produced by Modified Backpropagation differ from those produced by Ordinary Backpropagation. We give here an analysis over a single training run on network B2, but similar results hold for all networks in table \ref{tab:networks} over repetitions of the experiment. As Figure \ref{fig:cos-b2} shows, gradients suggested by either algorithm remain relatively dissimilar throughout training, which further indicates a difference in the expected optimization trajectory. Furthermore, as evidenced by Figures \ref{fig:pca-b2} and \ref{fig:cos-b2}, Modified Backpropagation travels faster (\textit{i.e.}, gives stronger gradient signal) than Ordinary Backpropagation, even when optimal learning rates are selected for both algorithms.
 
 \subsection{Quantitative differences}
 \label{sec:experiment-quant}
-We now give an evaluation of the relative efficacy of Modified Backpropagation to Ordinary Backpropagation. As shown in figure \ref{fig:avg-abs-err}, for networks B2-B4 Modified Backpropagation achieves significantly lower absolute idempotent error on average at lower learning rate. For network B3 the difference is more than one order of magnitude. As the tested networks represent varying architectures with a commonly used activation function, these results suggest that Modified Backpropagation fares well in a variety of training configurations.
+We now give an evaluation of the relative efficacy of Modified Backpropagation to Ordinary Backpropagation. As shown in Figure \ref{fig:avg-abs-err}, for networks B2-B4 Modified Backpropagation achieves significantly lower absolute idempotent error on average at lower learning rate. For network B3 the difference is more than one order of magnitude. As the tested networks represent varying architectures with a commonly used activation function, these results suggest that Modified Backpropagation fares well in a variety of training configurations.
 
-Although the dataset used here is i.i.d. samples drawn from a Gaussian $\mathcal{N}(0, 1)$, we observe similar results when data comes from other distributions, such as the uniform distribution $\mathcal{U}(-k, k)$ for $k \in \mathbb{N}$. Following \cite{shocher-ign}, we also observe similar results when applying a Fast Fourier Transform to MNIST data, finding the mean and variance of each frequency, and then apply an inverse FFT to get noise with similar frequency-statistics as the underlying dataset.
+Although the dataset used here is i.i.d. samples drawn from a Gaussian ${\mathcal{N}(0, 1)}$, we observe similar results when data comes from other distributions, such as the uniform distribution ${\mathcal{U}(-k, k)}$ for ${k \in \mathbb{N}}$. Following \citealt{shocher-ign}, we also observe similar results when applying a Fast Fourier Transform to MNIST data, finding the mean and variance of each frequency, and then apply an inverse FFT to get noise with similar frequency-statistics as the underlying dataset.
 
 Whilst the above results are promising, a natural concern is the quality of solutions produced. In particular, if a significant fraction of networks trained using Modified Backpropagation have weights close to the null matrix $\bm{0}$ or the identity matrix $\vI$ then the algorithm might not be practically useful. We refer the reader to Appendix \ref{app:test-networks-data} which shows that the norm of trained weight matrices in general is comparable to those found by Ordinary Backpropagation.
 
@@ -444,38 +445,41 @@ Whilst the above results are promising, a natural concern is the quality of solu
 \subsection{Application to Generative Networks}
 \label{sec:experiment-gen}
 %\textit{We replicate the results of IGN on MNIST and CelebA. Latent space analysis. Takeaway is that we show application to a U-net GAN architecture based on Conv layers.}
-As mentioned, one of the motivating factors for actively enforcing idempotency during training is to apply it as a secondary optimization objective in conjunction with optimizing for a primary task. In this section we replicate the results of \citealt{shocher-ign} as we train a DCGAN architecture (see Appendix \ref{app:gen-training-scheme}) on the MNIST dataset. Let $\mathcal{D}$ denote the distribution of MNIST samples, while $\mathcal{D}' = \mathcal{N}(0, 1)$ from which noise is sampled. In this training scheme, the loss function being optimized is
+As mentioned, one of the motivating factors for actively enforcing idempotency during training is to apply it as a secondary optimization objective in conjunction with optimizing for a primary task. In this section we replicate the results of \citealt{shocher-ign} as we train a U-net style DCGAN architecture (see Appendix \ref{app:gen-training-scheme}) on the MNIST dataset. Let $\mathcal{D}$ denote the distribution of MNIST samples, while ${\mathcal{D}' = \mathcal{N}(0, 1)}$ from which noise is sampled. In this training scheme, the loss function being optimized is
 %
 \begin{align}
-    \mathcal{L}{(\vtheta, \vtheta')} & = \lambda_r \mathcal{L}_{\mathrm{rec}}{(\vtheta)} \label{eq:gan-loss}                                                                \\
-                                     & + \lambda_i \mathcal{L}_{\mathrm{idem}}{(\vtheta, \vtheta')} + \lambda_r \mathcal{L}_{\mathrm{tight}}{(\vtheta, \vtheta')} \nonumber
+    \begin{split}
+        \mathcal{L}{(\vtheta, \vtheta')} & = \lambda_r \mathcal{L}_{\mathrm{rec}}{(\vtheta)}                                                                          \\
+                                         & + \lambda_i \mathcal{L}_{\mathrm{idem}}{(\vtheta, \vtheta')} + \lambda_r \mathcal{L}_{\mathrm{tight}}{(\vtheta, \vtheta')}
+    \end{split}
+    \label{eq:gan-loss}
 \end{align}
 %
-where $\vtheta'$ is a copy of $\vtheta$ at each time step where $\vtheta'$ is detached from the computational graph. To see why this matters, consider $(\vx, \vy^*) \sim D$ and $\vz \sim D'$ and the individual loss components:
+where $\vtheta'$ is a copy of $\vtheta$ at each time step where $\vtheta'$ is detached from the computational graph. To see why this matters, consider $(\vx, \vy^*) \sim \mathcal{D}$ and $\vz \sim \mathcal{D}'$ and the individual loss components:
 %
-\begin{align*}
+\begin{align}
     \mathcal{L}_{\mathrm{rec}}{((\vx, \vy^*); \vtheta)}    & = \Vert \vy^* - f_{\vtheta}(\vx) \Vert_1                            \\
     \mathcal{L}_{\mathrm{idem}}{(\vz; \vtheta, \vtheta')}  & = \Vert f_{\vtheta'}(f_{\vtheta}(\vz)) - f_{\vtheta}(\vz) \Vert_1   \\
     \mathcal{L}_{\mathrm{tight}}{(\vz; \vtheta, \vtheta')} & = -\Vert f_{\vtheta}(f_{\vtheta'}(\vz)) - f_{\vtheta'}(\vz) \Vert_1
-\end{align*}
+\end{align}
 %
 For instance, the quantity $\pd{\mathcal{L}_{\mathrm{idem}}{(\vz; \vtheta, \vtheta')}}{\vtheta}$ is only affected by the inner application of $f$ above due to $\vtheta'$ being detached from the graph. The relationship between loss components $\mathcal{L}_{\mathrm{idem}}$ and $\mathcal{L}_{\mathrm{tight}}$ is adversarial in nature.
 
-The major difference in this work from \citealt{shocher-ign} is that we use Modified Backpropagation for implementing both $\mathcal{L}_{\mathrm{idem}}$ and $\mathcal{L}_{\mathrm{tight}}$. As such, we effectively evaluate both loss components as the Mean Squared Error (MSE) instead of the $L_1$ loss, and we use the training scheme in section \ref{sec:method-scheme} to construct the backwards pass (see Appendix \ref{app:gen-training-scheme}). We use the same definition for $\mathcal{L}_{\mathrm{rec}}$ as above.
+The major difference in this work from \citealt{shocher-ign} is that we use Modified Backpropagation for implementing both $\mathcal{L}_{\mathrm{idem}}$ and $\mathcal{L}_{\mathrm{tight}}$. As such, we effectively evaluate both loss components as the Mean Squared Error (MSE) instead of the $L_1$ loss, and we use the training scheme in Section \ref{sec:method-scheme} to construct the backwards pass (see Appendix \ref{app:gen-training-scheme}). We use the same implementation for $\mathcal{L}_{\mathrm{rec}}$ as above.
 
-We have successfully replicated several results of \cite{shocher-ign} under this training scheme. In particular, figure \ref{fig:gen-mnist} shows qualitative examples of noise drawn from $D'$ being mapped to images resembling samples from the MNIST dataset. Note that in some cases we also observe the same ``self-correction'' of artefacts after the second application (bottom row) as observed by \cite{shocher-ign}. In figure \ref{fig:latent-mnist} we observe the effect of applying the trained network to noise linearly interpolated between two clear samples $\vA$ and $\vB$. We again observe the secondary application of the network ``cleaning up'' images. For more uncurated examples of generated images, see Appendix \ref{app:gen-samples}.
+We have successfully replicated several results of \citealt{shocher-ign} under this training scheme. In particular, Figure \ref{fig:gen-mnist} shows qualitative examples of noise drawn from $\mathcal{D}'$ being mapped to images resembling samples from the MNIST dataset. While samples remains largely similar between the first and second application of the network, in some cases we do also observe the same ``self-correction'' of artefacts/noise after the second application observed by \citealt{shocher-ign}. In Figure \ref{fig:latent-mnist} we visualize the effect of applying the trained network to noise linearly interpolated between two clear samples $\vA, \vB \in \mathbb{R}^{28 \times 28}$. We again observe the secondary application of the network ``cleaning up'' images. For more uncurated examples of generated images, see Appendix \ref{app:gen-samples}.
 
-We note that qualitative results in this training scheme for both Ordinary Backpropagation (as applied in \citealt{shocher-ign}) and Modified Backpropagation are heavily sensitive to the hyperparameters $\lambda$ chosen in eq. \ref{eq:gan-loss}. With fine-tuned hyperparameters we believe the results shown here are qualitatively on-par with those of \citealt{shocher-ign}, whilst uncompetitive with state-of-the-art models.
+We note that qualitative results in this training scheme for both Ordinary Backpropagation (as applied in \citealt{shocher-ign}) and Modified Backpropagation are heavily sensitive to the hyperparameters $\lambda$ chosen in Eq. (\ref{eq:gan-loss}). With fine-tuned hyperparameters we believe the results shown here are on-par with those of \citealt{shocher-ign}, whilst uncompetitive with state-of-the-art models.
 
 % How does this fare with the one-shot inference?
 
-Lastly, we note that whilst the aim of these results is to demonstrate a practical application of Modified Backpropagation, we believe the results displayed here could be easily replicated with other datasets, such as CelebA, Cifar10, or similar. Additionally, further work is required to fully ascertain the practical benefit of Modified Backpropagation as a secondary optimization procedure in general. In particular, further experiments with other data modalities, primary optimization objectives, and datasets is needed to understand the wider applicability of the results of section \ref{sec:experiment-qual} and \ref{sec:experiment-quant}.
+Although the aim of these results is to demonstrate a practical application of Modified Backpropagation, we believe the results could be easily replicated with other datasets, such as CelebA, Cifar10, or similar. Additionally, further work is required to fully ascertain the practical benefit of Modified Backpropagation as a secondary optimization procedure in general. In particular, further experiments with other data modalities, primary optimization objectives, and datasets is needed to understand the wider applicability of the results of Sections \ref{sec:experiment-qual} and \ref{sec:experiment-quant}.
 
 
 \begin{figure*}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{./resources/modified_0-1_0-1_rand_noise_mapping.png}
-    \caption{Uncurated generations of U-DCGAN model trained on MNIST with Modified Backpropagation for optimizing idempotent and tightness losses. In the top row are samples drawn from a random distribution with mean $0$ and variance $1$, whist the second and third rows represent first and second application of the network to these samples, respectively.}
+    \caption{Uncurated generations of the U-net style DCGAN model trained on MNIST with Modified Backpropagation for optimizing idempotent and tightness losses. In the top row are samples drawn from a random distribution with mean $0$ and variance $1$, whist the second and third rows represent first and second application of the network to these samples, respectively.}
     \label{fig:gen-mnist}
 \end{figure*}
 
@@ -483,7 +487,7 @@ Lastly, we note that whilst the aim of these results is to demonstrate a practic
 \begin{figure*}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{./resources/modified_0-1_0-1_rand_latent_space.png}
-    \caption{Latent space manipulation for U-DCGAN model trained on MNIST with Modified Backpropagation for optimizing idempotent and tightness losses. Samples $\mathbf{A}$ and $\mathbf{B}$ are selected randomly while remaining samples are linear combinations of these. We give the first and second application of the model.}
+    \caption{Latent space manipulation for the U-net style DCGAN model trained on MNIST with Modified Backpropagation for optimizing idempotent and tightness losses. Samples $\mathbf{A}$ and $\mathbf{B}$ are selected randomly while remaining samples are linear combinations of these. We give the first and second application of the model.}
     \label{fig:latent-mnist}
 \end{figure*}
 
@@ -512,21 +516,21 @@ Lastly, we note that whilst the aim of these results is to demonstrate a practic
 % Other objectives than idempotency.
 % Other uses of perturbation theory in ML?
 
-\subsection*{Algebraic properties in neural networks}
+\subsection{Algebraic properties in neural networks}
 There has been significant work in actively enforcing algebraic properties in weights of neural networks for a variety of reasons. For instance, in \citealt{mikolov-rnn,le-rnn-relu} it was found that enforcing \textit{part} of the weights of an RNN to remain close to the identity throughout training can cause the network to capture more long-term information, yielding performance close to LSTMs for the same natural language modelling tasks. \citealt{arjovsky-rnn} have also found that RNNs can overcome the exploding/vanishing gradient problem if weight matrices are actively enforced to be approximately unitary throughout training. Similarly, \citealt{saxe-isometry,kiani-projunn,jing-tunable-unn} all explore unitary RNNs in the same vein. Lastly, \citealt{ardizzone-inv} demonstrate that under a specialized training scheme, inverse mappings of MLPs can be found that can recover correlations in the parameter space.
 
-These methods generally attempt to \textit{mitigate undesirable effects} inherent to particular architectures or training schemes, whereas the work we present intends to \textit{characterize behaviour} that the network should exhibit. As such, applications of the work of \citealt{shocher-ign} is closest to ours, hence we focus on this in section \ref{sec:experiment-gen}. Nevertheless, the prolific use of orthogonal weights in the literature invites future work into adapting Modified Backpropagation to enforce orthogonality $\big((\vK')^T(\vK')=(\vK')(\vK')^T=\vI\big)$ as opposed to idempotency $\big((\vK')^2 - (\vK') = \bm{0}\big)$.
+These methods generally attempt to \textit{mitigate undesirable effects} inherent to particular architectures or training schemes, whereas the work we present intends to \textit{characterize behaviour} that the network should exhibit. As such, applications of the work of \citealt{shocher-ign} is closest to ours, hence we focus on this in Section \ref{sec:experiment-gen}. Nevertheless, the prolific use of orthogonal/unitary weights in the literature invites future work into adapting Modified Backpropagation to enforce orthogonality ${\big((\vK')^T(\vK')=(\vK')(\vK')^T=\vI\big)}$ as opposed to idempotency ${\big((\vK')^2 - (\vK') = \bm{0}\big)}$.
 
 
-\subsection*{Alternatives to gradients}
-There is a large body of work focusing on approximating gradients. In \citealt{spall-perturb} a stochastic variant of finite differences called SPSA is suggested with competitive performance at lower computational cost. \citealt{scheinberg-approx,do-approx,bandler-approx} all further explore this and similar approaches based on finite differences. Nevertheless, a core idea of Modified Backpropagation is the direct substitution of the gradient of $\mathcal{L}_{\mathrm{idem}}$ with the quantity in eq. \ref{eq:substitution}. Although the exact relationship between this quantity and the gradients produced by Ordinary Backpropagation is still unclear, it is certainly not a direct approximation as seen in section \ref{sec:experiment-qual}.
+\subsection{Alternatives to gradients}
+There is a large body of work focusing on approximating gradients. In \citealt{spall-perturb} a stochastic variant of finite differences called SPSA is suggested with competitive performance at lower computational cost. \citealt{scheinberg-approx,do-approx,bandler-approx} all further explore this and similar approaches based on finite differences. Nevertheless, a core idea of Modified Backpropagation is the direct substitution of the gradient of $\mathcal{L}_{\mathrm{idem}}$ with the quantity in Eq. (\ref{eq:substitution}). Although the exact relationship between this quantity and the gradients produced by Ordinary Backpropagation is still unclear, it is certainly not a direct approximation as evidenced in Section \ref{sec:experiment-qual}.
 
 
 % (0.5 pages)
 \section{Conclusion}
 \label{sec:conclusion}
 %\textit{Give a conclusion of central idea: the use of perturbation analysis to find an iterator which we have successfully applied to a range of toy examples and GAN scenarios.}
-In this work, we have given motivation for actively enforcing idempotency in arbitrary neural networks used in data transformation. The core idea presented is the idempotent corrector $g(\vK) = 3\vK^3 - 2\vK^2$, which has been derived by solving a linear program such that $\vK' = g(\vK)$ for a near-idempotent matrix $\vK$ and a perfectly idempotent $\vK'$. We have also expanded the idea to a training scheme for arbitrary neural networks via a small modification to the canonical backpropagation algorithm, termed Modified Backpropagation. Experimental results have shown that optimizer trajectories generally differ from those of Ordinary Backpropagation across a wide variety of MLP network configurations. Furthermore, we showed that Modified Backpropagation outperforms Ordinary Backpropagation in finding neural networks with lower idempotent error by up to an order of magnitude. Lastly, we demonstrate that Modified Backpropagation can be used alongside Ordinary Backpropagation to train generative models on MNIST, following the example of \citealt{shocher-ign}.
+In this work, we have given motivation for actively enforcing idempotency in arbitrary neural networks used in data transformation. The central idea presented is the idempotent corrector ${g(\vK) = 3\vK^3 - 2\vK^2}$, which has been derived by solving a linear program such that ${\vK' = g(\vK)}$ for a near-idempotent matrix $\vK$ and a perfectly idempotent $\vK'$. We have also expanded the idea to a training scheme for arbitrary neural networks via a small modification to the canonical backpropagation algorithm, termed Modified Backpropagation. Experimental results have shown that optimizer trajectories generally differ from those of Ordinary Backpropagation across a wide variety of MLP network configurations. Furthermore, we showed that Modified Backpropagation outperforms Ordinary Backpropagation in finding neural networks with lower idempotent error by up to an order of magnitude. Lastly, we demonstrate that Modified Backpropagation can be used alongside Ordinary Backpropagation to train generative models on MNIST, following the example of \citealt{shocher-ign}.
 
 We believe the work presented here suggests that alternative methods to gradient-based optimization in neural networks are practically viable, and we hope that future work will explore other applications of the central ideas presented here.
 
@@ -600,36 +604,41 @@ We give a detailed description of how to derive idempotent operators for $\vK$ t
 For $n=1$ we give the first $j=1,\dots, 8$ idempotent correctors:
 \begin{itemize}
     \item For $j=1, 2$, there are no solutions.
-    \item {For $j=3$, there is one solution (found in $\sim130$ ms)
-          \begin{align*}
+    \item {For $j=3$, there is one solution (found in $\sim130$ ms):
+          \begin{align}
               g(\vK) = 3 \vK^2 - 2 \vK^3
-          \end{align*}
+          \end{align}
           }
-    \item {For $j=4$, there is a family of solutions (found in $\sim620$ ms)
-          \begin{align*}
+    \item {For $j=4$, there is a family of solutions (found in $\sim620$ ms):
+          \begin{align}
               g(\vK) = \frac{4 - \alpha_3}{2} \vK^2 + \alpha_3 \vK^3 - \frac{2 + \alpha_3}{2} \vK^4
-          \end{align*}
+          \end{align}
           }
-    \item {For $j=5$, there is a family of solutions (found in $\sim3.8$ s)
-          \begin{align*}
+    \item {For $j=5$, there is a family of solutions (found in $\sim3.8$ s):
+          \begin{align}
               g(\vK) = \frac{4 - \alpha_3 + \alpha_5}{2} \vK^2 + \alpha_3 \vK^3 - \frac{2 + \alpha_3 + 3\alpha_5}{2} \vK^4 + \alpha_5  \vK^5
-          \end{align*}
+          \end{align}
           }
-    \item {For $j=6$, there is a family of solutions (found in $\sim24$ s)
-          \begin{align*}
+    \item {For $j=6$, there is a family of solutions (found in $\sim24$ s):
+          \begin{align}
               g(\vK) = \frac{6 - 3\alpha_3 - 2\alpha_4 - \alpha_5}{4} \vK^2 + \alpha_3 \vK^3 + \alpha_4 \vK^4 + \alpha_5  \vK^5 - \frac{2 + \alpha_3 + 2\alpha_4 + 3 \alpha_5}{4} \vK^6
-          \end{align*}
+          \end{align}
           }
-    \item {For $j=7$, there is a family of solutions (found in $\sim152$ seconds)
-          \begin{align*}
-              g(\vK) = \frac{7 - 4\alpha_3 - 3 \alpha_4 - 2\alpha_5 - \alpha_6}{5} \vK^2 + \alpha_3 \vK^3 + \alpha_4 \vK^4 + \alpha_5  \vK^5 + \alpha_6 \vK^6 - \frac{2 + \alpha_3 + 2\alpha_4 + 3 \alpha_5 + 4 \alpha_6}{5} \vK^7
-          \end{align*}
+    \item {For $j=7$, there is a family of solutions (found in $\sim152$ seconds):
+          \begin{align}
+              \begin{split}
+                  g(\vK) = & \frac{7 - 4\alpha_3 - 3 \alpha_4 - 2\alpha_5 - \alpha_6}{5} \vK^2 + \alpha_3 \vK^3 + \alpha_4 \vK^4     \\
+                           & + \alpha_5  \vK^5 + \alpha_6 \vK^6 - \frac{2 + \alpha_3 + 2\alpha_4 + 3 \alpha_5 + 4 \alpha_6}{5} \vK^7
+              \end{split}
+          \end{align}
           }
-    \item {For $j=8$, there is a family of solutions (found in $\sim922$ seconds)
-          \begin{align*}
-              g(\vK) = & \frac{8 - 5\alpha_3 - 4 \alpha_4 - 3\alpha_5 - 2\alpha_6 - \alpha_7}{6} \vK^2 + \alpha_3 \vK^3 + \alpha_4 \vK^4                      \\
-                       & + \alpha_5  \vK^5 + \alpha_6 \vK^6 + \alpha_7 \vK^7 - \frac{2 + \alpha_3 + 2\alpha_4 + 3 \alpha_5 + 4\alpha_6 + 5 \alpha_7}{6} \vK^8
-          \end{align*}
+    \item {For $j=8$, there is a family of solutions (found in $\sim922$ seconds):
+          \begin{align}
+              \begin{split}
+                  g(\vK) = & \frac{8 - 5\alpha_3 - 4 \alpha_4 - 3\alpha_5 - 2\alpha_6 - \alpha_7}{6} \vK^2 + \alpha_3 \vK^3 + \alpha_4 \vK^4                      \\
+                           & + \alpha_5  \vK^5 + \alpha_6 \vK^6 + \alpha_7 \vK^7 - \frac{2 + \alpha_3 + 2\alpha_4 + 3 \alpha_5 + 4\alpha_6 + 5 \alpha_7}{6} \vK^8
+              \end{split}
+          \end{align}
           }
 
 \end{itemize}
@@ -637,28 +646,30 @@ For $n=1$ we give the first $j=1,\dots, 8$ idempotent correctors:
 \newpage
 \section{Jordan normal form analysis}
 \label{app:jordan}
-Let $d_\lambda = \alpha(\lambda)$ denote the algebraic multiplicity of eigenvalue $\lambda$ and let $\gamma(\lambda)$ denote the geometric multiplicity of $\lambda$. Given the equation:
+Let ${d_\lambda = \alpha(\lambda)}$ denote the algebraic multiplicity of eigenvalue $\lambda$ and let $\gamma(\lambda)$ denote the geometric multiplicity of $\lambda$. Given the equation
 \begin{equation}
-    \vK = 3\vK^2 - 2\vK^3
+    \vK = 3\vK^2 - 2\vK^3,
     \label{eq:k-problem}
 \end{equation}
-We can substitute $\vK = \vP\vJ\vP^{-1}$:
-\begin{equation*}
-    \vP\vJ\vP^{-1} = 3(\vP\vJ\vP^{-1})^2 - 2(\vP\vJ\vP^{-1})^3
-\end{equation*}
-Which can be simplified as:
-\begin{equation*}
-    \vP\vJ\vP^{-1} = 3\vP\vJ^2\vP^{-1} - 2\vP\vJ^3\vP^{-1}
-\end{equation*}
+we can substitute $\vK = \vP\vJ\vP^{-1}$,
+\begin{equation}
+    \vP\vJ\vP^{-1} = 3(\vP\vJ\vP^{-1})^2 - 2(\vP\vJ\vP^{-1})^3,
+\end{equation}
+which can be simplified to
+\begin{equation}
+    \vP\vJ\vP^{-1} = 3\vP\vJ^2\vP^{-1} - 2\vP\vJ^3\vP^{-1}.
+\end{equation}
+
 Since $\vP$ is invertible, this is equivalent to:
 \begin{equation}
-    \vJ = 3\vJ^2 - 2\vJ^3
+    \vJ = 3\vJ^2 - 2\vJ^3.
     \label{eq:j-problem}
 \end{equation}
+
 Thus for an arbitrary $\vK$, solving Eq. (\ref{eq:k-problem}) equates to solving Eq. (\ref{eq:j-problem}).
 
-Since $\vJ$ is block-diagonal, the equation in (\ref{eq:j-problem}) can be broken down into smaller equations for each block, $\vJ_{\lambda} = 3\vJ_{\lambda}^2 - 2\vJ_{\lambda}^3$, which we can write as a system of equations:
-\begin{equation*}
+Since $\vJ$ is block-diagonal, the equation in (\ref{eq:j-problem}) can be broken down into smaller equations for each block, ${\vJ_{\lambda} = 3\vJ_{\lambda}^2 - 2\vJ_{\lambda}^3}$, which we can write as a system of equations:
+\begin{equation}
     \begin{pmatrix}
         \lambda & 1       & 0       & \hdots & 0       \\
         0       & \lambda & 1       & \hdots & 0       \\
@@ -678,9 +689,9 @@ Since $\vJ$ is block-diagonal, the equation in (\ref{eq:j-problem}) can be broke
         \vdots    & \vdots     & \vdots     & \vdots     & \ddots & \vdots    \\
         0         & 0          & 0          & 0          & \hdots & \lambda^3 \\
     \end{pmatrix}
-\end{equation*}
+\end{equation}
 
-Thus, for a $(d_\lambda \times d_\lambda)$ Jordan block we have up to four equations per eigenvalue:
+Thus, for a ${(d_\lambda \times d_\lambda)}$ Jordan block we have up to four equations per eigenvalue:
 \begin{align}
     \lambda & = 3\lambda^2 - 2\lambda^3                             & \label{eq:app-cond1}                                    \\
     1       & = 3(2\lambda) - 2(3\lambda^2) = 6\lambda - 6\lambda^2 & \text{Only when $d_\lambda \geq2$.}\label{eq:app-cond2} \\
@@ -690,19 +701,19 @@ Thus, for a $(d_\lambda \times d_\lambda)$ Jordan block we have up to four equat
 There are never more equations than this, since all other entries in a Jordan block must be 0.
 
 Since Eq. (\ref{eq:app-cond4}) is a contradiction, we can have no solution which solves all Eqs. (\ref{eq:app-cond1}), (\ref{eq:app-cond2}), (\ref{eq:app-cond3}), and (\ref{eq:app-cond4}). Note also that there exists no solutions satisfying Eqs. (\ref{eq:app-cond1}), (\ref{eq:app-cond2}), and (\ref{eq:app-cond3}), nor do any solutions exist for both Eqs. (\ref{eq:app-cond1}) and (\ref{eq:app-cond2}). The following are solutions which satisfy only Eq. (\ref{eq:app-cond1}):
-\begin{equation*}
+\begin{equation}
     \lambda =\{0, 0.5, 1\}
-\end{equation*}
+\end{equation}
 
-The only situation where Eqs. (\ref{eq:app-cond2}), (\ref{eq:app-cond3}), and (\ref{eq:app-cond4}) do not arise is when $\alpha(\lambda)=\gamma(\lambda)$, which is precisely the case when $\vK$ is diagonalizable. Therefore, any $\vK$ which is a solution to (\ref{eq:k-problem}) must have a Jordan Normal Form which is a diagonal matrix:
-\begin{equation*}
+The only situation where Eqs. (\ref{eq:app-cond2}), (\ref{eq:app-cond3}), and (\ref{eq:app-cond4}) do not arise is when ${\alpha(\lambda)=\gamma(\lambda)}$, which is precisely the case when $\vK$ is diagonalizable. Therefore, any $\vK$ which is a solution to (\ref{eq:k-problem}) must have a Jordan normal form which is a diagonal matrix:
+\begin{equation}
     \vJ = \begin{pmatrix}
         \lambda_1 & 0         & 0      & \hdots & 0         \\
         0         & \lambda_2 & 0      & \hdots & 0         \\
         \vdots    & \vdots    & \vdots & \ddots & \vdots    \\
         0         & 0         & 0      & \hdots & \lambda_3 \\
     \end{pmatrix}
-\end{equation*}
+\end{equation}
 
 %We can therefore arrive at the following conclusions:
 %\begin{itemize}
@@ -722,13 +733,13 @@ The only situation where Eqs. (\ref{eq:app-cond2}), (\ref{eq:app-cond3}), and (\
 \newpage
 \section{Automatic differentiation rule}
 \label{app:autodiff-rule}
-To implement Modified Backpropagation in PyTorch we make use of custom autograd functions. The mathematical description of the loss function for idempotency is
+To implement Modified Backpropagation in PyTorch we make use of custom autograd functions. The mathematical description of the loss function for idempotency is:
 %
-\begin{align*}
+\begin{align}
     \mathcal{L}_{\mathrm{idem}}(\vy) = \frac{1}{n} \sum_{i = 1}^n \left( f_{\vtheta}(\vy) - \vy \right)^2.
-\end{align*}
+\end{align}
 
-To practically implement the function, we note that PyTorch optimizers reduce $-\mathcal{L}$ for some loss function $\mathcal{L}$, but as per section \ref{sec:method} our method reduces idempotent when the loss function above is \textit{not} negatively signed. This leads to the implementation in \texttt{E.backward} function in algorithm \ref{alg:rule}.
+To practically implement the function, we note that PyTorch optimizers reduce $-\mathcal{L}$ for some loss function $\mathcal{L}$, but as per Section \ref{sec:method} our method reduces idempotent when the loss function above is \textit{not} negatively signed. This leads to the implementation in \texttt{E.backward} function in algorithm \ref{alg:rule}.
 
 \begin{algorithm}[htbp]
     \caption{Modified Backpropagation PyTorch rule.}
@@ -738,7 +749,7 @@ To practically implement the function, we note that PyTorch optimizers reduce $-
 
 \clearpage
 
-We give the computational graph constructed by PyTorch for calculating gradients in Modified Backpropagation and Ordinary Backpropagation. The graphs are constructed using the same single-layer neural network without biases and no activation function. We therefore have $f_{\vtheta}(\vx)=\vW\vx$. \textbf{PyTorch, however, represents the input $\vx$ transposed, hence the following use  $f_{\vtheta}(\vx)=\vW\vx^T=\vx\vW^T$ as the definition.} We show the graphs describing the computation of gradients for $\vW$ for a single optimization step.
+We give the computational graph constructed by PyTorch for calculating gradients in Modified Backpropagation and Ordinary Backpropagation. The graphs are constructed using the same single-layer neural network without biases and no activation function. We therefore have ${f_{\vtheta}(\vx)=\vW\vx}$. \textbf{PyTorch, however, represents the input $\vx$ transposed, hence the following use  ${f_{\vtheta}(\vx)=\vW\vx^T=\vx\vW^T}$ as the definition.} We show the graphs describing the computation of gradients for $\vW$ for a single optimization step.
 
 In these graphs, the weight matrix $\vW$ is the blue box, and the green box at the bottom of the graph is the gradient matrix $\pd{\mathcal{L}_{\mathrm{idem}}(f_{\vtheta}(\vx))}{\vW}$. Yellow boxes of size $3 \times 5$ denote the input $\vx$ consisting of 3 samples with 5 features each.
 
@@ -761,16 +772,16 @@ The red line in Figure \ref{fig:mod_autodiff_graph} denotes the intuitive split 
 The graph in Figure \ref{fig:ord_autodiff_graph} shows a computation of $\pd{\mathcal{L}_{\mathrm{idem}}(f_{\vtheta}(\vx))}{\vW}$ without using \pyth{E.backward}. Although the graph is less obvious, chasing the graph shows that it computes the following quantity:
 %
 \begin{align*}
-    (2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx)^T \vx\vW^T + ((2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx) \vW - 2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx)^T \vx,
+    (2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx)^T \vx\vW^T + ((2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx) \vW - 2(\vx\vW^T\vW^T-\vx\vW^T) \cdot \vx)^T \vx.
 \end{align*}
 %
-which is equivalent to the ordinary analytical solution to $\pd{\mathcal{L}_{\mathrm{idem}}(f_{\vtheta}(\vx))}{\vW}$.
+This is equivalent to the ordinary analytical solution to $\pd{\mathcal{L}_{\mathrm{idem}}(f_{\vtheta}(\vx))}{\vW}$.
 
 \newpage
 \section{Test networks error and norm}
 \label{app:test-networks-data}
 
-For each of the test networks outlined in table \ref{tab:networks} we report the distribution of absolute idempotent error and norm of the resulting mapping in figures \ref{fig:error-test-nets} and \ref{fig:norm-test-nets}. The learning rates used for training of each network is chosen to be the value in figure \ref{fig:avg-abs-err} with the lowest idempotent error for each algorithm and network configuration.
+For each of the test networks outlined in table \ref{tab:networks} we report the distribution of absolute idempotent error and norm of the resulting mapping in Figures \ref{fig:error-test-nets} and \ref{fig:norm-test-nets}. The learning rates used for training of each network is chosen to be the value in Figure \ref{fig:avg-abs-err} with the lowest idempotent error for each algorithm and network configuration.
 
 \begin{figure}[H]
     \centering
@@ -819,9 +830,9 @@ For each of the test networks outlined in table \ref{tab:networks} we report the
 \newpage
 \section{Generative training scheme}
 \label{app:gen-training-scheme}
-We follow the example of \cite{shocher-ign} and train a U-Net style DCGAN architecture on the MNIST dataset.
+We follow the example of \citealt{shocher-ign} and train a U-Net style DCGAN architecture on the MNIST dataset. Let $\mathcal{L}$ denote the latent space and $\mathcal{X}$ denote the sample space. Then, letting ${G: \mathcal{L} \to \mathcal{X}}$ and ${D: \mathcal{X} \to \mathcal{L}}$ be the Generator and Discriminator of the network respectively, we apply the network $G(D(\vx)) = \vy$.
 
-Table \ref{tab:scheme} explicitly shows the architecture we use, and table \ref{tab:parameters} shows the hyperparameters chosen for training. The core difference between our configuration and that of \cite{shocher-ign} is the use of dropout layers at some layers.
+Table \ref{tab:scheme} explicitly shows the architecture we use, and table \ref{tab:parameters} shows the hyperparameters chosen for training. The core difference between our configuration and that of \citealt{shocher-ign} is the use of dropout layers at some layers.
 
 \begin{table}[htbp]
     \begin{center}
@@ -853,16 +864,16 @@ Table \ref{tab:scheme} explicitly shows the architecture we use, and table \ref{
     \begin{center}
         \begin{tabular}{| r | p{0.5\textwidth} |}
             \hline
-            \textbf{Parameter}         & \textbf{Value}                                                                                                     \\
+            \textbf{Parameter}         & \textbf{Value}                                                                                                         \\
             \hline
             \hline
-            Reconstruction loss metric & $L_1 = \Vert \vy^{*} - \vy_{\mathrm{pred}} \Vert_1$                                                                \\
-            Loss terms weighting       & $\lambda_r = 20$, $\lambda_i = 0.1$, $\lambda_r = 0.1$                                                             \\
-            Optimizer                  & Adam(lr = $1.0 \times 10^{-4}$, $\beta_1 = 0.5$, $\beta_2 = 0.999$)                                                \\
-            Dropout probability        & $0.05$                                                                                                             \\
-            Batch Size                 & $512$                                                                                                              \\
-            Epochs                     & $100$                                                                                                              \\
-            Weight initialization      & Default Kaiming Uniform initialization: $\mathcal{U}(-\sqrt{k}, \sqrt{k})$, for $k = \sqrt{1/n}$ for $n$ features. \\
+            Reconstruction loss metric & ${L_1 = \Vert \vy^{*} - \vy_{\mathrm{pred}} \Vert_1}$                                                                  \\
+            Loss terms weighting       & $\lambda_r = 20$, $\lambda_i = 0.1$, $\lambda_r = 0.1$                                                                 \\
+            Optimizer                  & Adam(lr = $1.0 \times 10^{-4}$, $\beta_1 = 0.5$, $\beta_2 = 0.999$)                                                    \\
+            Dropout probability        & $0.05$                                                                                                                 \\
+            Batch Size                 & $512$                                                                                                                  \\
+            Epochs                     & $100$                                                                                                                  \\
+            Weight initialization      & Default Kaiming Uniform initialization: ${\mathcal{U}(-\sqrt{k}, \sqrt{k})}$, for ${k = \sqrt{1/n}}$ for $n$ features. \\
             \hline
         \end{tabular}
         \vspace{5pt}
@@ -891,7 +902,7 @@ Table \ref{tab:scheme} explicitly shows the architecture we use, and table \ref{
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{./resources/pca_all.png}
-    \caption{Representative projections of the optimizer trajectories over 2500 epochs of either algorithm on each of the B1-B4 models at optimal learning rates (fig. \ref{fig:avg-abs-err}). Total variance captured is $>90\%$ with cosine similarity of PC1 and PC2 less than $1.0\times10^{-6}$ across all plots. Optimizer trajectory of Modified Backpropagation often deviates significantly from Ordinary Backpropagation, but may sometimes overlap (e.g., B4).}
+    \caption{Representative projections of the optimizer trajectories over 2500 epochs of either algorithm on each of the B1-B4 models at optimal learning rates (Figure \ref{fig:avg-abs-err}). Total variance captured is $>90\%$ with cosine similarity of PC1 and PC2 less than $1.0\times10^{-6}$ across all plots. Optimizer trajectory of Modified Backpropagation often deviates significantly from Ordinary Backpropagation, but may sometimes overlap (\textit{e.g.}, B4).}
     \label{fig:big-pca}
 \end{figure}
 

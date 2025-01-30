@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex out/paper"] 1738235554.4721 "out/paper.aux" "out/paper.bbl" "out/paper" 1738235561.41726 0
-  "./bibliography.bib" 1738235486.08111 13844 023d2746f2d5b30db8c21ef9c111b859 ""
+["bibtex out/paper"] 1738272626.99349 "out/paper.aux" "out/paper.bbl" "out/paper" 1738272634.25762 0
+  "./bibliography.bib" 1738272619.95153 15558 61eb43210d775fbe64d6e6093ee3df42 ""
   "./icml2025.bst" 1737721236.13857 27147 88eb4aed280e585571f8eac50f39a681 ""
-  "out/paper.aux" 1738235561.11384 17249 f4cb3e7f3f7946349f45b6c68ca592d5 "pdflatex"
+  "out/paper.aux" 1738272633.94687 17565 8739e1d4bba39d3c5e8c0b0e7328f77e "pdflatex"
   (generated)
   "out/paper.bbl"
   "out/paper.blg"
   (rewritten before read)
-["pdflatex"] 1738235554.57165 "paper.tex" "out/paper.pdf" "paper" 1738235561.41743 0
+["pdflatex"] 1738272627.14358 "paper.tex" "out/paper.pdf" "paper" 1738272634.25779 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -297,10 +297,10 @@
   "algorithmic.sty" 1737721236.15312 7615 a7a253154ed6d7d83141571d55bc3515 ""
   "fancyhdr.sty" 1737721236.14996 21006 088e3513a90ac3aa21515dd46e858ae4 ""
   "icml2025.sty" 1737740134.03561 28225 68f53e1de02f17651d51a9db58f94771 ""
-  "out/paper.aux" 1738235561.11384 17249 f4cb3e7f3f7946349f45b6c68ca592d5 "pdflatex"
-  "out/paper.bbl" 1738235554.56598 7351 975e8a41b162ff5e82735cbd14d747ab "bibtex out/paper"
-  "out/paper.out" 1738235555.46019 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "paper.tex" 1738235540.08098 66833 54a232dffe828ee065ee0fef18fbb8b8 ""
+  "out/paper.aux" 1738272633.94687 17565 8739e1d4bba39d3c5e8c0b0e7328f77e "pdflatex"
+  "out/paper.bbl" 1738272627.11262 8751 e75f8fc3679152fa85d256f50686865e "bibtex out/paper"
+  "out/paper.out" 1738272628.29839 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "paper.tex" 1738270469.86301 70132 ba4d9315bc8e0128bbfdbe95dbf4b973 ""
   "resources/abs_err_b1234.png" 1737812876.15942 445425 80699bdeaf4e3cc3953770ecf5b89997 ""
   "resources/autodiff_rule_code.tex" 1738098079.82569 773 bceda1efb2fd0cd125273ae92e093a57 ""
   "resources/comp_graph_mod_autodiff.pdf" 1738098314.96491 19327 f65602db5e3316b1025ac22f7a5f6e4c ""

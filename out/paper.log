@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.1)  30 JAN 2025 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.1)  30 JAN 2025 21:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -892,69 +892,88 @@ Underfull \vbox (badness 4108) has occurred while \output is active []
 
 
 
-]
-Underfull \vbox (badness 1571) has occurred while \output is active []
+] [2]
+Underfull \hbox (badness 2418) in paragraph at lines 282--283
+[]\OT1/ptm/m/n/10 (+20) In gen-eral, we place no re-stric-tions on the ma-trix
+ []
 
- [2]
-<./resources/fractal.pdf, id=109, 1194.4625pt x 518.93875pt>
+<./resources/fractal.pdf, id=111, 1194.4625pt x 518.93875pt>
 File: ./resources/fractal.pdf Graphic file (type pdf)
 <use ./resources/fractal.pdf>
-Package pdftex.def Info: ./resources/fractal.pdf  used on input line 319.
+Package pdftex.def Info: ./resources/fractal.pdf  used on input line 316.
 (pdftex.def)             Requested size: 482.94695pt x 209.82063pt.
- [3]
+[3]
+<./resources/pca_b2.png, id=141, 325.215pt x 325.215pt>
+File: ./resources/pca_b2.png Graphic file (type png)
+<use ./resources/pca_b2.png>
+Package pdftex.def Info: ./resources/pca_b2.png  used on input line 396.
+(pdftex.def)             Requested size: 211.3883pt x 211.3922pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4 <./resources/fractal.pdf>]
-<./resources/pca_b2.png, id=160, 325.215pt x 325.215pt>
-File: ./resources/pca_b2.png Graphic file (type png)
-<use ./resources/pca_b2.png>
-Package pdftex.def Info: ./resources/pca_b2.png  used on input line 395.
-(pdftex.def)             Requested size: 211.3883pt x 211.3922pt.
-<./resources/cos.png, id=171, 433.62pt x 144.54pt>
+<./resources/cos.png, id=186, 433.62pt x 144.54pt>
 File: ./resources/cos.png Graphic file (type png)
 <use ./resources/cos.png>
-Package pdftex.def Info: ./resources/cos.png  used on input line 406.
+Package pdftex.def Info: ./resources/cos.png  used on input line 407.
 (pdftex.def)             Requested size: 223.1329pt x 74.37827pt.
-<./resources/norm.png, id=172, 433.62pt x 144.54pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./resources/norm.png, id=187, 433.62pt x 144.54pt>
 File: ./resources/norm.png Graphic file (type png)
 <use ./resources/norm.png>
-Package pdftex.def Info: ./resources/norm.png  used on input line 413.
+Package pdftex.def Info: ./resources/norm.png  used on input line 414.
 (pdftex.def)             Requested size: 223.1329pt x 74.37827pt.
- [5 <./resources/pca_b2.png> <./resources/cos.png> <./resources/norm.png>]
-<./resources/abs_err_b1234.png, id=199, 867.24pt x 433.62pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<./resources/abs_err_b1234.png, id=198, 867.24pt x 433.62pt>
 File: ./resources/abs_err_b1234.png Graphic file (type png)
 <use ./resources/abs_err_b1234.png>
-Package pdftex.def Info: ./resources/abs_err_b1234.png  used on input line 432.
+Package pdftex.def Info: ./resources/abs_err_b1234.png  used on input line 433.
 (pdftex.def)             Requested size: 439.03726pt x 219.52223pt.
-<./resources/runs_err_b23.png, id=200, 722.7pt x 332.442pt>
+
+Underfull \vbox (badness 7168) has occurred while \output is active []
+
+ [5 <./resources/pca_b2.png>]
+<./resources/runs_err_b23.png, id=212, 722.7pt x 332.442pt>
 File: ./resources/runs_err_b23.png Graphic file (type png)
 <use ./resources/runs_err_b23.png>
-Package pdftex.def Info: ./resources/runs_err_b23.png  used on input line 439.
+Package pdftex.def Info: ./resources/runs_err_b23.png  used on input line 440.
 (pdftex.def)             Requested size: 341.47424pt x 157.07967pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3058) has occurred while \output is active []
 
- [6 <./resources/abs_err_b1234.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<./resources/modified_0-1_0-1_rand_noise_mapping.png, id=233, 722.7pt x 216.81pt>
+<./resources/modified_0-1_0-1_rand_noise_mapping.png, id=234, 722.7pt x 216.81pt>
 File: ./resources/modified_0-1_0-1_rand_noise_mapping.png Graphic file (type png)
 <use ./resources/modified_0-1_0-1_rand_noise_mapping.png>
-Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_noise_mapping.png  used on input line 477.
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_noise_mapping.png  used on input line 481.
 (pdftex.def)             Requested size: 341.47424pt x 102.44325pt.
-<./resources/modified_0-1_0-1_rand_latent_space.png, id=234, 794.97pt x 216.81pt>
+<./resources/modified_0-1_0-1_rand_latent_space.png, id=235, 794.97pt x 216.81pt>
 File: ./resources/modified_0-1_0-1_rand_latent_space.png Graphic file (type png)
 <use ./resources/modified_0-1_0-1_rand_latent_space.png>
-Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_latent_space.png  used on input line 485.
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_latent_space.png  used on input line 489.
 (pdftex.def)             Requested size: 390.25948pt x 106.43631pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./resources/runs_err_b23.png>]
+ [6 <./resources/cos.png> <./resources/norm.png>] [7 <./resources/abs_err_b1234.png> <./resources/runs_err_b23.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- (out/paper.bbl
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 11.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./resources/modified_0-1_0-1_rand_noise_mapping.png> <./resources/modified_0-1_0-1_rand_latent_space.png>] (out/paper.bbl
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 12.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -963,67 +982,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./resources/modified_0-1_0-1_rand_noise_mapping.png> <./resources/modified_0-1_0-1_rand_latent_space.png>]
-Underfull \hbox (badness 5403) in paragraph at lines 34--39
-[]\OT1/ptm/m/n/10 (+20) Hirschfelder, J. O., Brown, W. B., and Ep-stein,
- []
-
-
-Underfull \hbox (badness 2486) in paragraph at lines 34--39
-\OT1/ptm/m/n/10 (+20) S. T.  Re-cent de-vel-op-ments in per-tur-ba-tion the-
- []
-
-
-Underfull \hbox (badness 1810) in paragraph at lines 34--39
-\OT1/ptm/m/n/10 (+20) ory.  vol-ume 1 of \OT1/ptm/m/it/10 (+20) Ad-vances in Quan-tum Chem-
- []
-
-
-Underfull \hbox (badness 1803) in paragraph at lines 34--39
-\OT1/ptm/m/it/10 (+20) istry\OT1/ptm/m/n/10 (+20) , pp. 255--374. Aca-demic Press, 1964.  doi:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--39
-\OT1/ptm/m/n/10 (+20) https : / / doi . org / 10 . 1016 / S0065-[]3276(08 ) 60381-[]0$.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--39
+Underfull \hbox (badness 10000) in paragraph at lines 82--88
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . sciencedirect . com /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 80--86
-\OT1/ptm/m/n/10 (+20) doi: $https : / / doi . org / 10 . 1016 / j . compag . 2022 . 107208$.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 80--86
-\OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . sciencedirect . com /
- []
-
-
-Underfull \hbox (badness 1127) in paragraph at lines 126--130
-[]\OT1/ptm/m/n/10 (+20) Spall, J. C.  An overview of the si-mul-ta-ne-ous per-
- []
-
-
-Underfull \hbox (badness 2409) in paragraph at lines 126--130
-\OT1/ptm/m/it/10 (+20) Hop-kins Apl Tech-ni-cal Di-gest\OT1/ptm/m/n/10 (+20) , 19:482--492, 1998.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--130
-\OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / api . semanticscholar . org /
  []
 
 [9]) [10
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 584.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 588.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [11
@@ -1031,102 +997,98 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ] [12] (./resources/autodiff_rule_code.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/02/21 1.10 listings language file
 )) [13]
-<resources/comp_graph_mod_autodiff.pdf, id=412, 298.11375pt x 686.565pt>
+<resources/comp_graph_mod_autodiff.pdf, id=432, 298.11375pt x 686.565pt>
 File: resources/comp_graph_mod_autodiff.pdf Graphic file (type pdf)
 <use resources/comp_graph_mod_autodiff.pdf>
-Package pdftex.def Info: resources/comp_graph_mod_autodiff.pdf  used on input line 750.
+Package pdftex.def Info: resources/comp_graph_mod_autodiff.pdf  used on input line 761.
 (pdftex.def)             Requested size: 160.98232pt x 370.75006pt.
 
 
 pdfTeX warning: pdflatex (file ./resources/comp_graph_ord_autodiff.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<resources/comp_graph_ord_autodiff.pdf, id=413, 453.695pt x 939.51pt>
+<resources/comp_graph_ord_autodiff.pdf, id=433, 453.695pt x 939.51pt>
 File: resources/comp_graph_ord_autodiff.pdf Graphic file (type pdf)
 <use resources/comp_graph_ord_autodiff.pdf>
-Package pdftex.def Info: resources/comp_graph_ord_autodiff.pdf  used on input line 754.
+Package pdftex.def Info: resources/comp_graph_ord_autodiff.pdf  used on input line 765.
 (pdftex.def)             Requested size: 160.98232pt x 333.36353pt.
 [14
 
  <./resources/comp_graph_mod_autodiff.pdf> <./resources/comp_graph_ord_autodiff.pdf>]
-<resources/hist_abs_err_b1.png, id=450, 867.24pt x 216.81pt>
+<resources/hist_abs_err_b1.png, id=470, 867.24pt x 216.81pt>
 File: resources/hist_abs_err_b1.png Graphic file (type png)
 <use resources/hist_abs_err_b1.png>
-Package pdftex.def Info: resources/hist_abs_err_b1.png  used on input line 780.
+Package pdftex.def Info: resources/hist_abs_err_b1.png  used on input line 791.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist_abs_err_b2.png, id=451, 867.24pt x 216.81pt>
+<resources/hist_abs_err_b2.png, id=471, 867.24pt x 216.81pt>
 File: resources/hist_abs_err_b2.png Graphic file (type png)
 <use resources/hist_abs_err_b2.png>
-Package pdftex.def Info: resources/hist_abs_err_b2.png  used on input line 784.
+Package pdftex.def Info: resources/hist_abs_err_b2.png  used on input line 795.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist_abs_err_b3.png, id=452, 867.24pt x 216.81pt>
+<resources/hist_abs_err_b3.png, id=472, 867.24pt x 216.81pt>
 File: resources/hist_abs_err_b3.png Graphic file (type png)
 <use resources/hist_abs_err_b3.png>
-Package pdftex.def Info: resources/hist_abs_err_b3.png  used on input line 788.
+Package pdftex.def Info: resources/hist_abs_err_b3.png  used on input line 799.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist_abs_err_b4.png, id=453, 867.24pt x 216.81pt>
+<resources/hist_abs_err_b4.png, id=473, 867.24pt x 216.81pt>
 File: resources/hist_abs_err_b4.png Graphic file (type png)
 <use resources/hist_abs_err_b4.png>
-Package pdftex.def Info: resources/hist_abs_err_b4.png  used on input line 792.
+Package pdftex.def Info: resources/hist_abs_err_b4.png  used on input line 803.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist-norm-b1.png, id=454, 867.24pt x 216.81pt>
+<resources/hist-norm-b1.png, id=474, 867.24pt x 216.81pt>
 File: resources/hist-norm-b1.png Graphic file (type png)
 <use resources/hist-norm-b1.png>
-Package pdftex.def Info: resources/hist-norm-b1.png  used on input line 802.
+Package pdftex.def Info: resources/hist-norm-b1.png  used on input line 813.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist-norm-b2.png, id=455, 867.24pt x 216.81pt>
+<resources/hist-norm-b2.png, id=475, 867.24pt x 216.81pt>
 File: resources/hist-norm-b2.png Graphic file (type png)
 <use resources/hist-norm-b2.png>
-Package pdftex.def Info: resources/hist-norm-b2.png  used on input line 806.
+Package pdftex.def Info: resources/hist-norm-b2.png  used on input line 817.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist-norm-b3.png, id=456, 867.24pt x 216.81pt>
+<resources/hist-norm-b3.png, id=476, 867.24pt x 216.81pt>
 File: resources/hist-norm-b3.png Graphic file (type png)
 <use resources/hist-norm-b3.png>
-Package pdftex.def Info: resources/hist-norm-b3.png  used on input line 810.
+Package pdftex.def Info: resources/hist-norm-b3.png  used on input line 821.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
-<resources/hist-norm-b4.png, id=457, 867.24pt x 216.81pt>
+<resources/hist-norm-b4.png, id=477, 867.24pt x 216.81pt>
 File: resources/hist-norm-b4.png Graphic file (type png)
 <use resources/hist-norm-b4.png>
-Package pdftex.def Info: resources/hist-norm-b4.png  used on input line 814.
+Package pdftex.def Info: resources/hist-norm-b4.png  used on input line 825.
 (pdftex.def)             Requested size: 439.03726pt x 109.76111pt.
 
 Underfull \vbox (badness 1052) has occurred while \output is active []
 
  [15 <./resources/hist_abs_err_b1.png> <./resources/hist_abs_err_b2.png> <./resources/hist_abs_err_b3.png> <./resources/hist_abs_err_b4.png>] [16 <./resources/hist-norm-b1.png> <./resources/hist-norm-b2.png> <./resources/hist-norm-b3.png> <./resources/hist-norm-b4.png>] [17]
-<./resources/modified_0-1_0-1_rand_samples.png, id=497, 722.7pt x 1084.05pt>
+<./resources/modified_0-1_0-1_rand_samples.png, id=518, 722.7pt x 1084.05pt>
 File: ./resources/modified_0-1_0-1_rand_samples.png Graphic file (type png)
 <use ./resources/modified_0-1_0-1_rand_samples.png>
-Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_samples.png  used on input line 879.
+Package pdftex.def Info: ./resources/modified_0-1_0-1_rand_samples.png  used on input line 890.
 (pdftex.def)             Requested size: 317.08163pt x 475.62709pt.
  [18 <./resources/modified_0-1_0-1_rand_samples.png>]
-<./resources/pca_all.png, id=504, 650.43pt x 650.43pt>
+<./resources/pca_all.png, id=525, 650.43pt x 650.43pt>
 File: ./resources/pca_all.png Graphic file (type png)
 <use ./resources/pca_all.png>
-Package pdftex.def Info: ./resources/pca_all.png  used on input line 893.
+Package pdftex.def Info: ./resources/pca_all.png  used on input line 904.
 (pdftex.def)             Requested size: 390.25948pt x 390.27094pt.
  [19 <./resources/pca_all.png>] (out/paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 42157 strings out of 474116
- 942172 string characters out of 5743683
- 2106187 words of memory out of 5000000
- 63438 multiletter control sequences out of 15000+600000
- 599532 words of font info for 266 fonts, out of 8000000 for 9000
+ 42204 strings out of 474116
+ 942792 string characters out of 5743683
+ 2107187 words of memory out of 5000000
+ 63443 multiletter control sequences out of 15000+600000
+ 600791 words of font info for 279 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,131p,2153b,2130s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,15n,131p,2162b,2126s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on out/paper.pdf (19 pages, 6222177 bytes).
+Output written on out/paper.pdf (19 pages, 6226946 bytes).
 PDF statistics:
- 648 PDF objects out of 1000 (max. 8388607)
- 521 compressed objects within 6 object streams
- 152 named destinations out of 1000 (max. 500000)
+ 671 PDF objects out of 1000 (max. 8388607)
+ 544 compressed objects within 6 object streams
+ 174 named destinations out of 1000 (max. 500000)
  58481 words of extra memory for PDF output out of 61914 (max. 10000000)
 
