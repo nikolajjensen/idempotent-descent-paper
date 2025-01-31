@@ -6,19 +6,20 @@
 \citation{ma-compression,liu-gans}
 \citation{tambouratzis-sorting}
 \citation{namphol-compression,liu-gans}
-\citation{mao-deblurring,ilesanmi-denoising,liu-gans}
+\citation{ilesanmi-denoising,liu-gans,mao-deblurring}
 \citation{liu-gans}
-\citation{mao-deblurring,liu-gans}
+\citation{liu-gans,mao-deblurring}
+\citation{intro-pertub-theory}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:intro@cref}{{[section][1][]1}{[1][1][]1}}
 \newlabel{eq:idem}{{1}{1}{}{equation.1.1}{}}
 \newlabel{eq:idem@cref}{{[equation][1][]1}{[1][1][]1}}
 \newlabel{eq:idem-loss}{{2}{1}{}{equation.1.2}{}}
 \newlabel{eq:idem-loss@cref}{{[equation][2][]2}{[1][1][]1}}
-\citation{intro-pertub-theory}
 \citation{shocher-ign}
 \citation{hirschfelder-dev-perturb}
 \citation{intro-pertub-theory}
+\citation{jordan-form}
 \newlabel{eq:g}{{3}{2}{}{equation.1.3}{}}
 \newlabel{eq:g@cref}{{[equation][3][]3}{[1][2][]2}}
 \newlabel{sec:method}{{2}{2}{}{section.2}{}}
@@ -31,10 +32,9 @@
 \newlabel{eq:ansatz@cref}{{[equation][4][]4}{[1][2][]2}}
 \newlabel{sec:method-fixed-stab}{{2.2}{2}{}{subsection.2.2}{}}
 \newlabel{sec:method-fixed-stab@cref}{{[subsection][2][2]2.2}{[1][2][]2}}
-\citation{jordan-form}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:plot-g}{{1}{3}{Plot of $\vK ' = 3 \vK ^2 - 2 \vK ^3$ in the case $\vK $ is scalar}{figure.caption.1}{}}
-\newlabel{fig:plot-g@cref}{{[figure][1][]1}{[1][3][]3}}
+\newlabel{fig:plot-g@cref}{{[figure][1][]1}{[1][2][]3}}
 \newlabel{eq:cond1}{{7}{3}{}{equation.2.7}{}}
 \newlabel{eq:cond1@cref}{{[equation][7][]7}{[1][3][]3}}
 \newlabel{eq:cond2}{{8}{3}{}{equation.2.8}{}}
@@ -71,13 +71,13 @@
 \newlabel{fig:avg-abs-err@cref}{{[figure][6][]6}{[1][5][]6}}
 \newlabel{fig:avg-epoch-err}{{7}{6}{On networks B2 and B3, the average idempotent error across 10 runs for each learning rate is reported for each algorithm. Each column of graphs represents one algorithm. Modified Backpropagation achieves lower idempotent error at lower learning rates than Ordinary Backpropagation. The biggest relative improvement between algorithms occurs in the first $\sim 500$ epochs}{figure.caption.7}{}}
 \newlabel{fig:avg-epoch-err@cref}{{[figure][7][]7}{[1][5][]6}}
+\newlabel{sec:experiment-gen}{{3.3}{6}{}{subsection.3.3}{}}
+\newlabel{sec:experiment-gen@cref}{{[subsection][3][3]3.3}{[1][6][]6}}
 \citation{shocher-ign}
 \citation{shocher-ign}
 \citation{shocher-ign}
 \citation{shocher-ign}
 \citation{shocher-ign}
-\newlabel{sec:experiment-gen}{{3.3}{7}{}{subsection.3.3}{}}
-\newlabel{sec:experiment-gen@cref}{{[subsection][3][3]3.3}{[1][6][]7}}
 \newlabel{eq:gan-loss}{{16}{7}{}{equation.3.16}{}}
 \newlabel{eq:gan-loss@cref}{{[equation][16][]16}{[1][7][]7}}
 \newlabel{fig:gen-mnist}{{8}{7}{Uncurated generations of the U-net style DCGAN model trained on MNIST with Modified Backpropagation for optimizing idempotent and tightness losses. In the top row are samples drawn from a random distribution with mean $0$ and variance $1$, whist the second and third rows represent first and second application of the network to these samples, respectively}{figure.caption.8}{}}
@@ -86,11 +86,11 @@
 \newlabel{fig:latent-mnist@cref}{{[figure][9][]9}{[1][6][]7}}
 \citation{mikolov-rnn,le-rnn-relu}
 \citation{arjovsky-rnn}
-\citation{saxe-isometry,kiani-projunn,jing-tunable-unn}
+\citation{saxe-isometry,jing-tunable-unn,kiani-projunn}
 \citation{ardizzone-inv}
 \citation{shocher-ign}
 \citation{spall-perturb}
-\citation{scheinberg-approx,do-approx,bandler-approx}
+\citation{bandler-approx,do-approx,scheinberg-approx}
 \citation{shocher-ign}
 \bibdata{bibliography}
 \bibcite{ardizzone-inv}{{1}{2019}{{Ardizzone et~al.}}{{Ardizzone, Kruse, Wirkert, Rahner, Pellegrini, Klessen, Maier-Hein, Rother, and Köthe}}}
@@ -184,7 +184,7 @@
 \citation{shocher-ign}
 \newlabel{app:gen-training-scheme}{{E}{17}{Impact Statement}{appendix.E}{}}
 \newlabel{app:gen-training-scheme@cref}{{[appendix][5][2147483647]E}{[1][17][]17}}
-\newlabel{tab:scheme}{{2}{17}{Network architecture}{table.caption.14}{}}
+\newlabel{tab:scheme}{{2}{17}{U-Net style DCGAN Network architecture}{table.caption.14}{}}
 \newlabel{tab:scheme@cref}{{[table][2][2147483647]2}{[1][17][]17}}
 \newlabel{tab:parameters}{{3}{17}{Training parameters}{table.caption.15}{}}
 \newlabel{tab:parameters@cref}{{[table][3][2147483647]3}{[1][17][]17}}
